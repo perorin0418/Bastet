@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.net.perorin.bastet.plugins.timemanage.controller.TimeManageController">
+   <children>
+      <AnchorPane prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;">
+         <children>
+            <JFXSpinner fx:id="hour" layoutX="61.0" layoutY="17.0" prefHeight="206.0" prefWidth="206.0" progress="0.21" radius="100.0" startingAngle="90.0" styleClass="hour" />
+            <JFXSpinner fx:id="minute" layoutX="76.0" layoutY="32.0" prefHeight="176.0" prefWidth="176.0" progress="0.21" radius="100.0" startingAngle="90.0" styleClass="minute" />
+            <JFXSpinner fx:id="second" layoutX="91.0" layoutY="47.0" prefHeight="146.0" prefWidth="146.0" progress="0.21" radius="100.0" startingAngle="90.0" styleClass="second" />
+            <BorderPane layoutX="64.0" layoutY="81.0" prefHeight="79.0" prefWidth="200.0">
+               <center>
+                  <Label fx:id="day" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="78.0" text="30" textFill="#2ea9df" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="64.0" />
+                     </font>
+                  </Label>
+               </center>
+            </BorderPane>
+            <BorderPane layoutX="64.0" layoutY="65.0" prefHeight="39.0" prefWidth="200.0">
+               <center>
+                  <Label fx:id="weekAndMonth" text="Wed, Sep" textFill="#2ea9df" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="workArea" layoutX="352.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;">
+         <children>
+            <JFXTextField fx:id="workTitle" focusColor="#a5dee4" layoutX="25.0" layoutY="64.0" prefHeight="25.0" prefWidth="213.0" promptText="作業タイトル" unFocusColor="#2ea9df" />
+            <JFXComboBox fx:id="workKind" focusColor="#a5dee4" layoutX="25.0" layoutY="108.0" prefHeight="25.0" prefWidth="213.0" promptText="作業種類" unFocusColor="#2ea9df" />
+            <AnchorPane layoutX="252.0" layoutY="93.0" prefHeight="40.0" prefWidth="50.0" style="-fx-border-color: #2ea9df;">
+               <children>
+                  <JFXButton fx:id="workRec" layoutX="2.0" layoutY="2.0" prefHeight="39.0" prefWidth="49.0" ripplerFill="#a5dee4" text="記録" textFill="#2ea9df" />
+               </children>
+            </AnchorPane>
+            <JFXTextArea fx:id="workDetail" focusColor="#a5dee4" layoutX="25.0" layoutY="151.0" prefHeight="68.0" prefWidth="278.0" promptText="作業詳細" unFocusColor="#2ea9df" />
+            <Label layoutX="154.0" layoutY="27.0" text="～" textFill="#2ea9df">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <AnchorPane layoutX="704.0" prefHeight="760.0" prefWidth="328.0" style="-fx-border-color: #0F2540;">
+         <children>
+            <ScrollPane fx:id="agendaScroll" layoutX="14.0" layoutY="14.0" prefHeight="735.0" prefWidth="298.0" style="-fx-background-color: transparent;">
+               <content>
+                  <BorderPane fx:id="agendaPane" prefHeight="733.0" prefWidth="280.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="260.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+      <AnchorPane layoutX="352.0" layoutY="260.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+      <AnchorPane fx:id="tablePane" layoutY="520.0" prefHeight="240.0" prefWidth="680.0" style="-fx-border-color: #0F2540;" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,134 @@
+
+/* スクロールバーのトラック部分 */
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+	-fx-background-color:transparent;
+	-fx-border-color:transparent;
+}
+
+/* スクロールバーの左右矢印の背景削除 */
+.scroll-bar:horizontal .increment-button ,
+.scroll-bar:horizontal .decrement-button {
+    -fx-background-color:transparent;
+}
+
+/* スクロールバーの上下矢印の背景削除 */
+.scroll-bar:vertical .increment-button ,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color:transparent;
+}
+
+/* スクロールバーの矢印削除 */
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+	-fx-shape: " ";
+/* 	-fx-padding:0; */
+}
+
+/* スクロールバーのつまみを変更 */
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #1E88A8;
+	-fx-background-insets: 2, 0, 0;
+	-fx-background-radius: 2em;
+
+}
+
+/* スクロールバーの背景透過 */
+.scroll-bar {
+	-fx-background-color: transparent;
+}
+
+/* スクロールバーのトラック背景透過 */
+.scroll-bar .track-background {
+	-fx-background-color: rgba(8, 25, 45, 0.98);
+}
+
+/* 円グラフの各色 */
+.data0.chart-pie { -fx-pie-color: #fbb79a; }
+.data1.chart-pie { -fx-pie-color: #ffdaa9; }
+.data2.chart-pie { -fx-pie-color: #fffbb7; }
+.data3.chart-pie { -fx-pie-color: #dce8b6; }
+.data4.chart-pie { -fx-pie-color: #afd6b4; }
+.data5.chart-pie { -fx-pie-color: #acd9d6; }
+.data6.chart-pie { -fx-pie-color: #a7dcf5; }
+.data7.chart-pie { -fx-pie-color: #acc1e1; }
+.data8.chart-pie { -fx-pie-color: #afa5cb; }
+.data9.chart-pie { -fx-pie-color: #d6b0ce; }
+.data10.chart-pie { -fx-pie-color: #fabad1; }
+.data11.chart-pie { -fx-pie-color: #fab9b7; }
+
+/* ウィンドウのルートを透過 */
+.root {
+	-fx-background-color: transparent;
+}
+
+/* ウィンドウのヘッダー */
+.Window-Header {
+	-fx-background-color: rgba(8, 25, 45, 0.98);
+}
+
+/* ウィンドウのサイド */
+.Window-Side {
+	-fx-background-color: rgba(8, 25, 45, 0.98);
+}
+
+/* ウィンドウのボディ */
+.Window-Body {
+	-fx-background-color: rgba(8, 25, 45, 0.98);
+}
+
+.hour .arc {
+	-fx-stroke: #2EA9DF;
+	-fx-stroke-width: 10;
+}
+.minute .arc {
+	-fx-stroke: #51A8DD;
+	-fx-stroke-width: 10;
+}
+.second .arc {
+	-fx-stroke: #7DB9DE;
+	-fx-stroke-width: 10;
+}
+
+.percentage {
+	visibility: hidden;
+}
+
+.jfx-text-field {
+	-fx-prompt-text-fill: #2ea9df;
+	-fx-text-fill: #a5dee4;
+}
+
+.jfx-combo-box {
+	-fx-prompt-text-fill: #2ea9df;
+	-fx-text-fill: #a5dee4;
+}
+
+.jfx-text-area {
+	-fx-prompt-text-fill: #2ea9df;
+	-fx-text-fill: #a5dee4;
+}
+
+.jfx-time-picker .jfx-text-field {
+	-fx-prompt-text-fill: #2ea9df;
+	-fx-text-fill: #a5dee4;
+	-jfx-focus-color: #a5dee4;
+	-jfx-unfocus-color: #2ea9df;
+}
+
+.late-hours-region {
+	-fx-background-color: transparent;
+}
+
+.time-label {
+	-fx-text-fill: #2ea9df;
+}
+
+.early-hours-region {
+	-fx-background-color: transparent;
+}
+
+.viewport {
+	-fx-background-color: transparent;
+}
