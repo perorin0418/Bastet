@@ -71,7 +71,8 @@ class WindowController {
 
 		// ×ボタンで最小化
 		closeButton.setOnMouseClicked({
-			stage.setIconified(true);
+//			stage.setIconified(true);
+			stage.close()
 		})
 
 		timeManage_img.setImage(new Image(Util.getResourceStr("img/apply/Programming-Watch-icon.png")))

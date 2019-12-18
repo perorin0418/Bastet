@@ -1,37 +1,31 @@
-
 /* スクロールバーのトラック部分 */
-.scroll-bar:horizontal .track,
-.scroll-bar:vertical .track{
-	-fx-background-color:transparent;
-	-fx-border-color:transparent;
+.scroll-bar:horizontal .track, .scroll-bar:vertical .track {
+	-fx-background-color: transparent;
+	-fx-border-color: transparent;
 }
 
 /* スクロールバーの左右矢印の背景削除 */
-.scroll-bar:horizontal .increment-button ,
-.scroll-bar:horizontal .decrement-button {
-    -fx-background-color:transparent;
+.scroll-bar:horizontal .increment-button, .scroll-bar:horizontal .decrement-button
+	{
+	-fx-background-color: transparent;
 }
 
 /* スクロールバーの上下矢印の背景削除 */
-.scroll-bar:vertical .increment-button ,
-.scroll-bar:vertical .decrement-button {
-    -fx-background-color:transparent;
+.scroll-bar:vertical .increment-button, .scroll-bar:vertical .decrement-button
+	{
+	-fx-background-color: transparent;
 }
 
 /* スクロールバーの矢印削除 */
-.scroll-bar .increment-arrow,
-.scroll-bar .decrement-arrow {
+.scroll-bar .increment-arrow, .scroll-bar .decrement-arrow {
 	-fx-shape: " ";
-/* 	-fx-padding:0; */
 }
 
 /* スクロールバーのつまみを変更 */
-.scroll-bar:horizontal .thumb,
-.scroll-bar:vertical .thumb {
-    -fx-background-color: #1E88A8;
+.scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb {
+	-fx-background-color: #1E88A8;
 	-fx-background-insets: 2, 0, 0;
 	-fx-background-radius: 2em;
-
 }
 
 /* スクロールバーの背景透過 */
@@ -45,18 +39,53 @@
 }
 
 /* 円グラフの各色 */
-.data0.chart-pie { -fx-pie-color: #fbb79a; }
-.data1.chart-pie { -fx-pie-color: #ffdaa9; }
-.data2.chart-pie { -fx-pie-color: #fffbb7; }
-.data3.chart-pie { -fx-pie-color: #dce8b6; }
-.data4.chart-pie { -fx-pie-color: #afd6b4; }
-.data5.chart-pie { -fx-pie-color: #acd9d6; }
-.data6.chart-pie { -fx-pie-color: #a7dcf5; }
-.data7.chart-pie { -fx-pie-color: #acc1e1; }
-.data8.chart-pie { -fx-pie-color: #afa5cb; }
-.data9.chart-pie { -fx-pie-color: #d6b0ce; }
-.data10.chart-pie { -fx-pie-color: #fabad1; }
-.data11.chart-pie { -fx-pie-color: #fab9b7; }
+.data0.chart-pie {
+	-fx-pie-color: #fbb79a;
+}
+
+.data1.chart-pie {
+	-fx-pie-color: #ffdaa9;
+}
+
+.data2.chart-pie {
+	-fx-pie-color: #fffbb7;
+}
+
+.data3.chart-pie {
+	-fx-pie-color: #dce8b6;
+}
+
+.data4.chart-pie {
+	-fx-pie-color: #afd6b4;
+}
+
+.data5.chart-pie {
+	-fx-pie-color: #acd9d6;
+}
+
+.data6.chart-pie {
+	-fx-pie-color: #a7dcf5;
+}
+
+.data7.chart-pie {
+	-fx-pie-color: #acc1e1;
+}
+
+.data8.chart-pie {
+	-fx-pie-color: #afa5cb;
+}
+
+.data9.chart-pie {
+	-fx-pie-color: #d6b0ce;
+}
+
+.data10.chart-pie {
+	-fx-pie-color: #fabad1;
+}
+
+.data11.chart-pie {
+	-fx-pie-color: #fab9b7;
+}
 
 /* ウィンドウのルートを透過 */
 .root {
@@ -82,10 +111,12 @@
 	-fx-stroke: #2EA9DF;
 	-fx-stroke-width: 10;
 }
+
 .minute .arc {
 	-fx-stroke: #51A8DD;
 	-fx-stroke-width: 10;
 }
+
 .second .arc {
 	-fx-stroke: #7DB9DE;
 	-fx-stroke-width: 10;
@@ -131,4 +162,61 @@
 
 .viewport {
 	-fx-background-color: transparent;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.tree-table-row-cell {
+	-fx-background-color: transparent;
+}
+
+.tree-table-view {
+	-fx-background-color: transparent;
+	/* -fx-border-color: #2ea9df;
+	-fx-border-insets : 1; */
+	-fx-tree-table-color: #24936E;
+}
+
+.tree-table-view:focused .tree-table-row-cell:selected {
+	-fx-background-color: -fx-tree-table-color;
+	-fx-table-cell-border-color: -fx-tree-table-color;
+}
+
+.tree-table-view .column-header {
+	-fx-border-width: 0;
+}
+
+.column-header-background {
+	-fx-border-color: #2ea9df;
+}
+
+.tree-table-view .column-header, .tree-table-view .column-header .text {
+	-fx-font: 13 '源ノ角ゴシック JP Normal';
+	-fx-text-fill: #a5dee4;
+	-fx-fill: #a5dee4;
+}
+
+.tree-table-view .tree-table-row-cell .tree-table-cell, .tree-table-view .column-header {
+	-fx-font: 14 '源ノ角ゴシック JP Normal';
+	-fx-text-fill: #a5dee4;
+}
+
+.tree-table-view:focused .tree-table-row-cell:selected .tree-table-cell {
+	-fx-font: 14 '源ノ角ゴシック JP Normal';
+	-fx-text-fill: black;
 }

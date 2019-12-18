@@ -11,7 +11,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.net.perorin.bastet.window.WindowController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.net.perorin.bastet.window.WindowController">
    <left>
       <VBox fx:id="side" prefHeight="800.0" prefWidth="200.0" spacing="5.0" style="-fx-border-color: #0F2540;" styleClass="Window-Side" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -84,7 +84,7 @@
          </children></VBox>
    </left>
    <top>
-      <AnchorPane fx:id="header" prefHeight="30.0" prefWidth="1280.0" style="-fx-border-color: #0F2540;" styleClass="Window-Header" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="header" prefHeight="32.0" prefWidth="1280.0" style="-fx-border-color: #0F2540;" styleClass="Window-Header" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="8.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>

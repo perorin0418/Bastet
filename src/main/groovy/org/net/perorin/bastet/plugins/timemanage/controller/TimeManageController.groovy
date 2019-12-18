@@ -6,6 +6,7 @@ import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 import org.net.perorin.bastet.data.WorkData
+import org.net.perorin.bastet.plugins.timemanage.parts.EditDialog
 import org.net.perorin.bastet.util.SmoothishScrollpane
 import org.net.perorin.bastet.util.Util
 
@@ -21,6 +22,7 @@ import com.jfoenix.controls.JFXTimePicker
 import com.jfoenix.controls.JFXTreeTableColumn
 import com.jfoenix.controls.JFXTreeTableView
 import com.jfoenix.controls.RecursiveTreeItem
+import com.jfoenix.controls.JFXButton.ButtonType
 
 import javafx.animation.Animation
 import javafx.animation.KeyFrame
@@ -69,7 +71,7 @@ class TimeManageController {
 
 	// テーブル
 	@FXML AnchorPane tablePane
-
+	ObservableList<WorkData> workDatas
 
 	@FXML
 	def initialize(){
@@ -259,13 +261,16 @@ class TimeManageController {
 
 		JFXTreeTableColumn<WorkData, String> titleCol = new JFXTreeTableColumn<>("タイトル")
 		titleCol.setCellValueFactory({param -> param.getValue().getValue().title})
-		titleCol.setPrefWidth(150)
+		titleCol.setPrefWidth(190)
 		JFXTreeTableColumn<WorkData, String> workCol = new JFXTreeTableColumn<>("作業種類")
 		workCol.setCellValueFactory({param -> param.getValue().getValue().work})
+		workCol.setPrefWidth(190)
 		JFXTreeTableColumn<WorkData, String> startCol = new JFXTreeTableColumn<>("開始時間")
 		startCol.setCellValueFactory({param -> param.getValue().getValue().start})
+		startCol.setPrefWidth(78)
 		JFXTreeTableColumn<WorkData, String> endCol = new JFXTreeTableColumn<>("終了時間")
 		endCol.setCellValueFactory({param -> param.getValue().getValue().end})
+		endCol.setPrefWidth(78)
 		JFXTreeTableColumn<WorkData, String> editCol = new JFXTreeTableColumn<>("")
 		editCol.setCellFactory({
 			return new TreeTableCell<WorkData, String>() {
@@ -279,8 +284,14 @@ class TimeManageController {
 								setGraphic(null);
 								setText(null);
 							} else {
+								btn.setRipplerFill(Paint.valueOf("#a5dee4"))
+								btn.setTextFill(Paint.valueOf("#2ea9df"))
+								btn.setButtonType(ButtonType.FLAT)
+								btn.setStyle("-fx-background-color: #08192D;")
 								btn.setOnAction( {event ->
-									println getIndex()
+									EditDialog.showEditDialog(tablePane.getScene().getWindow(), workDatas.get(getIndex()).title.get(), {
+										println "fuga"
+									})
 								});
 								setGraphic(btn);
 								setText(null);
@@ -301,8 +312,12 @@ class TimeManageController {
 								setGraphic(null);
 								setText(null);
 							} else {
+								btn.setRipplerFill(Paint.valueOf("#a5dee4"))
+								btn.setTextFill(Paint.valueOf("#2ea9df"))
+								btn.setButtonType(ButtonType.FLAT)
+								btn.setStyle("-fx-background-color: #08192D;")
 								btn.setOnAction( {event ->
-									println getIndex()
+									workDatas.remove(getIndex())
 								});
 								setGraphic(btn);
 								setText(null);
@@ -311,10 +326,11 @@ class TimeManageController {
 					}
 		})
 
-		ObservableList<WorkData> workDatas = FXCollections.observableArrayList();
-		WorkData hoge = new WorkData("t1", "w1", "d1", "s1", "e1")
-		WorkData fuga = new WorkData("t2", "w2", "d2", "s2", "e2")
-		workDatas.addAll(hoge, fuga)
+		workDatas = FXCollections.observableArrayList();
+		50.times {
+			WorkData hoge = new WorkData("title${it}", "work${it}", "", "${it}:00", "${it}:00")
+			workDatas.addAll(hoge)
+		}
 		TreeItem<WorkData> root = new RecursiveTreeItem<WorkData>(workDatas, {it -> it.getChildren()})
 		JFXTreeTableView<WorkData> table = new JFXTreeTableView<>()
 		table.getColumns().addAll(titleCol, workCol, startCol, endCol, editCol, delCol)
