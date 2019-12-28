@@ -5,10 +5,8 @@ import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
-import org.net.perorin.bastet.data.WorkData
 import org.net.perorin.bastet.plugins.timemanage.parts.EditDialog
 import org.net.perorin.bastet.util.SmoothishScrollpane
-import org.net.perorin.bastet.util.Util
 
 import com.calendarfx.model.Entry
 import com.calendarfx.view.DayView
@@ -23,11 +21,14 @@ import com.jfoenix.controls.JFXTreeTableColumn
 import com.jfoenix.controls.JFXTreeTableView
 import com.jfoenix.controls.RecursiveTreeItem
 import com.jfoenix.controls.JFXButton.ButtonType
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject
 
 import javafx.animation.Animation
 import javafx.animation.KeyFrame
 import javafx.animation.KeyValue
 import javafx.animation.Timeline
+import javafx.beans.property.SimpleStringProperty
+import javafx.beans.property.StringProperty
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import javafx.event.EventHandler
@@ -67,11 +68,11 @@ class TimeManageController {
 	@FXML ScrollPane agendaScroll
 	@FXML BorderPane agendaPane
 	DayView dayView
-	def entryList = []
+	def agendaEntryList = []
 
 	// テーブル
 	@FXML AnchorPane tablePane
-	ObservableList<WorkData> workDatas
+	ObservableList<WorkTableData> workDatas
 
 	@FXML
 	def initialize(){
@@ -83,8 +84,8 @@ class TimeManageController {
 
 	def initClock() {
 
-		day.setFont(Font.loadFont(Util.getResourceStr("font/SourceHanSansJP-Normal.otf"), 64))
-		weekAndMonth.setFont(Font.loadFont(Util.getResourceStr("font/SourceHanSansJP-Normal.otf"), 18))
+		day.setFont(Font.font("源ノ角ゴシック JP Normal", 64))
+		weekAndMonth.setFont(Font.font("源ノ角ゴシック JP Normal", 18))
 		double hourCurrent = 0
 		double minCurrent = 0
 		double secCurrent = 0
@@ -150,18 +151,18 @@ class TimeManageController {
 		workFrom.setLayoutY(20)
 		workFrom.setPrefWidth(120)
 		workFrom.setDefaultColor(Paint.valueOf("#2ea9df"))
-		workFrom.getEditor().setFont(Font.loadFont(Util.getResourceStr("font/SourceHanSansJP-Normal.otf"), 14))
+		workFrom.getEditor().setFont(Font.font("源ノ角ゴシック JP Normal", 14))
 		workTo = new JFXTimePicker()
 		workTo.setLayoutX(190)
 		workTo.setLayoutY(20)
 		workTo.setPrefWidth(120)
 		workTo.setDefaultColor(Paint.valueOf("#2ea9df"))
-		workTo.getEditor().setFont(Font.loadFont(Util.getResourceStr("font/SourceHanSansJP-Normal.otf"), 14))
+		workTo.getEditor().setFont(Font.font("源ノ角ゴシック JP Normal", 14))
 		workArea.getChildren().addAll(0, workFrom, workTo)
 
-		workTitle.setFont(Font.loadFont(Util.getResourceStr("font/SourceHanSansJP-Normal.otf"), 14))
+		workTitle.setFont(Font.font("源ノ角ゴシック JP Normal", 14))
 		workKind.setStyle("-fx-font: 14 '源ノ角ゴシック JP Normal'");
-		workDetail.setFont(Font.loadFont(Util.getResourceStr("font/SourceHanSansJP-Normal.otf"), 14))
+		workDetail.setFont(Font.font("源ノ角ゴシック JP Normal", 14))
 
 		workDetail.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
 					@Override
@@ -189,10 +190,10 @@ class TimeManageController {
 			LocalTime startTime = null
 			if(workFrom.getValue() != null) {
 				startTime = workFrom.getValue()
-			}else if(entryList.empty) {
+			}else if(agendaEntryList.empty) {
 				startTime = dayView.getStartTime()
 			}else {
-				startTime = entryList.stream()
+				startTime = agendaEntryList.stream()
 						.map { it.getEndTime() }
 						.sorted({it1, it2 -> it2.toSecondOfDay() - it1.toSecondOfDay()})
 						.collect().first()
@@ -209,7 +210,7 @@ class TimeManageController {
 			Entry<String> entry = new Entry()
 			entry.setTitle(workTitle.getText())
 			entry.setInterval(startTime, endTime)
-			entryList << entry
+			agendaEntryList << entry
 
 			datasetAgenda()
 		})
@@ -235,7 +236,7 @@ class TimeManageController {
 
 		// 時間割
 		dayView = new DayView()
-		entryList.forEach({
+		agendaEntryList.forEach({
 			it.setCalendar(dayView.getCalendarSources().first().getCalendars().first())
 		})
 
@@ -259,21 +260,21 @@ class TimeManageController {
 	def initTable() {
 
 
-		JFXTreeTableColumn<WorkData, String> titleCol = new JFXTreeTableColumn<>("タイトル")
+		JFXTreeTableColumn<WorkTableData, String> titleCol = new JFXTreeTableColumn<>("タイトル")
 		titleCol.setCellValueFactory({param -> param.getValue().getValue().title})
 		titleCol.setPrefWidth(190)
-		JFXTreeTableColumn<WorkData, String> workCol = new JFXTreeTableColumn<>("作業種類")
+		JFXTreeTableColumn<WorkTableData, String> workCol = new JFXTreeTableColumn<>("作業種類")
 		workCol.setCellValueFactory({param -> param.getValue().getValue().work})
 		workCol.setPrefWidth(190)
-		JFXTreeTableColumn<WorkData, String> startCol = new JFXTreeTableColumn<>("開始時間")
+		JFXTreeTableColumn<WorkTableData, String> startCol = new JFXTreeTableColumn<>("開始時間")
 		startCol.setCellValueFactory({param -> param.getValue().getValue().start})
 		startCol.setPrefWidth(78)
-		JFXTreeTableColumn<WorkData, String> endCol = new JFXTreeTableColumn<>("終了時間")
+		JFXTreeTableColumn<WorkTableData, String> endCol = new JFXTreeTableColumn<>("終了時間")
 		endCol.setCellValueFactory({param -> param.getValue().getValue().end})
 		endCol.setPrefWidth(78)
-		JFXTreeTableColumn<WorkData, String> editCol = new JFXTreeTableColumn<>("")
+		JFXTreeTableColumn<WorkTableData, String> editCol = new JFXTreeTableColumn<>("")
 		editCol.setCellFactory({
-			return new TreeTableCell<WorkData, String>() {
+			return new TreeTableCell<WorkTableData, String>() {
 
 						final JFXButton btn = new JFXButton("編集");
 
@@ -299,9 +300,9 @@ class TimeManageController {
 						}
 					}
 		})
-		JFXTreeTableColumn<WorkData, String> delCol = new JFXTreeTableColumn<>("")
+		JFXTreeTableColumn<WorkTableData, String> delCol = new JFXTreeTableColumn<>("")
 		delCol.setCellFactory({
-			return new TreeTableCell<WorkData, String>() {
+			return new TreeTableCell<WorkTableData, String>() {
 
 						final JFXButton btn = new JFXButton("削除");
 
@@ -327,12 +328,8 @@ class TimeManageController {
 		})
 
 		workDatas = FXCollections.observableArrayList();
-		50.times {
-			WorkData hoge = new WorkData("title${it}", "work${it}", "", "${it}:00", "${it}:00")
-			workDatas.addAll(hoge)
-		}
-		TreeItem<WorkData> root = new RecursiveTreeItem<WorkData>(workDatas, {it -> it.getChildren()})
-		JFXTreeTableView<WorkData> table = new JFXTreeTableView<>()
+		TreeItem<WorkTableData> root = new RecursiveTreeItem<WorkTableData>(workDatas, {it -> it.getChildren()})
+		JFXTreeTableView<WorkTableData> table = new JFXTreeTableView<>()
 		table.getColumns().addAll(titleCol, workCol, startCol, endCol, editCol, delCol)
 		table.setRoot(root)
 		table.setShowRoot(false)
@@ -340,6 +337,31 @@ class TimeManageController {
 		table.setLayoutY(10)
 		table.setPrefWidth(660)
 		table.setPrefHeight(220)
+		Label placeHolder = new Label("no data")
+		placeHolder.setFont(Font.font("源ノ角ゴシック JP Normal", 16))
+		placeHolder.setTextFill(Paint.valueOf("#a5dee4"))
+		table.setPlaceholder(placeHolder)
 		tablePane.getChildren().add(table)
 	}
+
+	def datasetTable() {
+
+	}
+
+	private class WorkTableData extends RecursiveTreeObject<WorkTableData> {
+		StringProperty title
+		StringProperty work
+		StringProperty detail
+		StringProperty start
+		StringProperty end
+
+		public WorkTableData(String title, String work, String detail, String start, String end) {
+			this.title = new SimpleStringProperty(title)
+			this.work = new SimpleStringProperty(work)
+			this.detail = new SimpleStringProperty(detail)
+			this.start = new SimpleStringProperty(start)
+			this.end = new SimpleStringProperty(end)
+		}
+	}
+
 }
