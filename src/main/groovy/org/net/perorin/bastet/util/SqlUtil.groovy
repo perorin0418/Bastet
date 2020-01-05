@@ -1,5 +1,7 @@
 package org.net.perorin.bastet.util;
 
+import java.text.SimpleDateFormat
+
 import org.net.perorin.bastet.data.JobData
 
 import groovy.sql.Sql
@@ -22,8 +24,8 @@ class SqlUtil{
 	 * @param id コードID
 	 * @return レコード
 	 */
-	static def getCodeParameter(def id) {
-		return SqlUtil.getInstance().firstRow("select * from CodeParameter where CodeId = ?", ["${id}"])
+	static def getParameter(def id) {
+		return SqlUtil.getInstance().firstRow("select * from Parameter where CodeId = ?", ["${id}"])
 	}
 
 	/**
@@ -31,8 +33,8 @@ class SqlUtil{
 	 * @param id コードID
 	 * @param para パラメーター（List）
 	 */
-	static def setCodeParameter(def id, def para) {
-		String sql = "update CodeParameter set "
+	static def setParameter(def id, def para) {
+		String sql = "update Parameter set "
 		for(int i = 1; i <= 8; i++) {
 			if(para[i-1] != null) {
 				sql += " Para${i} = '${para[i - 1]}'"
@@ -45,7 +47,15 @@ class SqlUtil{
 	static def addJobData(def jobDataList) {
 		jobDataList.each {
 			SqlUtil.getInstance().execute("""
-				replace into JobData values(${it.date}, ${it.code}, ${it.name}, ${it.kind}, ${it.alias})
+				replace into JobData values(${it.code}, ${it.name}, ${it.kind}, ${it.alias})
+			""")
+		}
+	}
+
+	static def removeJobData(def jobDataList) {
+		jobDataList.each {
+			SqlUtil.getInstance().execute("""
+				delete from JobData where Code = ${it.code} and Name = ${it.name} and Kind = ${it.kind} and Alias = ${it.alias}
 			""")
 		}
 	}
@@ -56,9 +66,8 @@ class SqlUtil{
 
 	static def getJobData() {
 		def ret = []
-		SqlUtil.getInstance().eachRow("select * from JobData where alias = '' order by Name, Kind"){
+		SqlUtil.getInstance().eachRow("select * from JobData where Alias = ''  order by Name, Kind"){
 			def jobData = new JobData()
-			jobData.date = it.Date
 			jobData.code = it.Code
 			jobData.name = it.Name
 			jobData.kind = it.Kind
@@ -72,12 +81,43 @@ class SqlUtil{
 		def ret = []
 		SqlUtil.getInstance().eachRow("select * from JobData where alias <> '' order by Alias"){
 			def jobData = new JobData()
-			jobData.date = it.Date
 			jobData.code = it.Code
 			jobData.name = it.Name
 			jobData.kind = it.Kind
 			jobData.alias = it.Alias
 			ret << jobData
+		}
+		return ret
+	}
+
+	static def addWorkData(def workDataList) {
+		Calendar cal = Calendar.getInstance()
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd")
+		SqlUtil.getInstance().execute("""
+				delete from WorkData where Date = ${sdf.format(cal.getTime())}
+				""")
+		workDataList.each {
+			SqlUtil.getInstance().execute("""
+				replace into WorkData values(${it.Date}, ${it.WorkTitle}, ${it.WorkDetail}, ${it.WorkStart}, ${it.WorkEnd}, ${it.JobCode}, ${it.JobName}, ${it.JobKind}, ${it.JobAlias})
+			""")
+		}
+	}
+
+	static def getWorkData() {
+		Calendar cal = Calendar.getInstance()
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd")
+		def ret = []
+		SqlUtil.getInstance().eachRow("select * from WorkData where Date = ${sdf.format(cal.getTime())} order by WorkStart"){
+			def obj = new Object()
+			obj.metaClass.workTitle = it.WorkTitle
+			obj.metaClass.workDetail = it.WorkDetail
+			obj.metaClass.workStart = it.WorkStart
+			obj.metaClass.workEnd = it.WorkEnd
+			obj.metaClass.jobCode = it.JobCode
+			obj.metaClass.jobName = it.JobName
+			obj.metaClass.jobKind = it.JobKind
+			obj.metaClass.jobAlias = it.JobAlias
+			ret << obj
 		}
 		return ret
 	}

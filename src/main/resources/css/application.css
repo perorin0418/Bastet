@@ -35,7 +35,7 @@
 
 /* スクロールバーのトラック背景透過 */
 .scroll-bar .track-background {
-	-fx-background-color: rgba(8, 25, 45, 0.98);
+	-fx-background-color: rgb(8, 25, 45);
 }
 
 /* 円グラフの各色 */
@@ -107,40 +107,57 @@
 	-fx-background-color: rgba(8, 25, 45, 0.98);
 }
 
+/* 時計 時間 */
 .hour .arc {
 	-fx-stroke: #2EA9DF;
 	-fx-stroke-width: 10;
 }
 
+/* 時計 分 */
 .minute .arc {
 	-fx-stroke: #51A8DD;
 	-fx-stroke-width: 10;
 }
 
+/* 時計 秒 */
 .second .arc {
 	-fx-stroke: #7DB9DE;
 	-fx-stroke-width: 10;
 }
 
+/* 時計のパーセンテージ表示 */
 .percentage {
 	visibility: hidden;
 }
 
+/* テキストフィールド 色設定 */
 .jfx-text-field {
 	-fx-prompt-text-fill: #2ea9df;
 	-fx-text-fill: #a5dee4;
 }
 
+/* コンボボックス 色設定 */
 .jfx-combo-box {
 	-fx-prompt-text-fill: #2ea9df;
 	-fx-text-fill: #a5dee4;
 }
 
+/* コンボボックスの選択肢 色設定 */
+.jfx-combo-box .list-cell ,
+.jfx-combo-box .list-cell .text {
+	-fx-fill: #a5dee4;
+	-fx-background-color: rgb(8, 25, 45);
+}
+
+
+
+/* テキストエリア 色設定 */
 .jfx-text-area {
 	-fx-prompt-text-fill: #2ea9df;
 	-fx-text-fill: #a5dee4;
 }
 
+/* 時間設定部品 色設定 */
 .jfx-time-picker .jfx-text-field {
 	-fx-prompt-text-fill: #2ea9df;
 	-fx-text-fill: #a5dee4;
@@ -148,47 +165,33 @@
 	-jfx-unfocus-color: #2ea9df;
 }
 
+/* 予定表の作業時間後の背景色 */
 .late-hours-region {
 	-fx-background-color: transparent;
 }
 
+/* 予定表の時刻の色 */
 .time-label {
 	-fx-text-fill: #2ea9df;
 }
 
+/* 予定表の作業時間前の背景色 */
 .early-hours-region {
 	-fx-background-color: transparent;
 }
 
+/* ScrollPaneの背景色 */
 .viewport {
 	-fx-background-color: transparent;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* テーブルの色設定 ここから */
 .tree-table-row-cell {
 	-fx-background-color: transparent;
 }
 
 .tree-table-view {
 	-fx-background-color: transparent;
-	/* -fx-border-color: #2ea9df;
-	-fx-border-insets : 1; */
 	-fx-tree-table-color: #24936E;
 }
 
@@ -220,3 +223,5 @@
 	-fx-font: 14 '源ノ角ゴシック JP Normal';
 	-fx-text-fill: black;
 }
+/* テーブルの色設定 ここまで */
+

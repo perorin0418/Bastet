@@ -1,6 +1,11 @@
 package org.net.perorin.bastet.plugins.timemanage.parts
 
-import org.net.perorin.bastet.util.Util
+import java.text.SimpleDateFormat
+import java.time.LocalTime
+import java.time.ZoneId
+
+import org.net.perorin.bastet.data.WorkData
+import org.net.perorin.bastet.util.SqlUtil
 
 import com.jfoenix.controls.JFXButton
 import com.jfoenix.controls.JFXComboBox
@@ -8,6 +13,7 @@ import com.jfoenix.controls.JFXTextArea
 import com.jfoenix.controls.JFXTextField
 import com.jfoenix.controls.JFXTimePicker
 
+import javafx.collections.FXCollections
 import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.scene.control.Label
@@ -50,7 +56,7 @@ class EditDialogController {
 			stage.setY(mouseEvent.getScreenY() + dragDelta.y);
 		})
 
-		// ×ボタンで最小化
+		// ×ボタンで閉じる
 		closeButton.setOnMouseClicked({
 			stage.close()
 			stage.hide()
@@ -61,19 +67,31 @@ class EditDialogController {
 		workFrom.setLayoutY(20)
 		workFrom.setPrefWidth(120)
 		workFrom.setDefaultColor(Paint.valueOf("#2ea9df"))
-		workFrom.getEditor().setFont(Font.loadFont(Util.getResourceStr("font/SourceHanSansJP-Normal.otf"), 14))
+		workFrom.getEditor().setFont(Font.font("源ノ角ゴシック JP Normal", 14))
 
 		workTo = new JFXTimePicker()
 		workTo.setLayoutX(190)
 		workTo.setLayoutY(20)
 		workTo.setPrefWidth(120)
 		workTo.setDefaultColor(Paint.valueOf("#2ea9df"))
-		workTo.getEditor().setFont(Font.loadFont(Util.getResourceStr("font/SourceHanSansJP-Normal.otf"), 14))
+		workTo.getEditor().setFont(Font.font("源ノ角ゴシック JP Normal", 14))
 		workArea.getChildren().addAll(0, workFrom, workTo)
 
-		workTitle.setFont(Font.loadFont(Util.getResourceStr("font/SourceHanSansJP-Normal.otf"), 14))
+		workTitle.setFont(Font.font("源ノ角ゴシック JP Normal", 14))
+
+		def list = []
+		SqlUtil.getJobData().each {
+			if(it.alias == "") {
+				if(it.kind != "") {
+					list << "[${it.kind}]${it.name}"
+				}else {
+					list << "${it.name}"
+				}
+			}
+		}
+		workKind.setItems(FXCollections.observableArrayList(list))
 		workKind.setStyle("-fx-font: 14 '源ノ角ゴシック JP Normal'");
-		workDetail.setFont(Font.loadFont(Util.getResourceStr("font/SourceHanSansJP-Normal.otf"), 14))
+		workDetail.setFont(Font.font("源ノ角ゴシック JP Normal", 14))
 
 		workDetail.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
 					@Override
@@ -92,14 +110,40 @@ class EditDialogController {
 		}))
 
 		workRec.setOnMouseClicked({
-			onClose()
+			WorkData wd = new WorkData()
+			wd.title = workTitle.getText()
+			wd.work = workKind.getValue()
+			wd.detail = workDetail.getText()
+			wd.start = workFrom.getValue()
+			wd.end = workTo.getValue()
+			onClose(wd)
 			stage.close()
 			stage.hide()
 		})
 	}
 
-	def setTitle(String title) {
+	def setWindowTitle(String title) {
 		this.title.setText("編集［${title}］")
+	}
+
+	def setWorkFrom(String workFrom) {
+		this.workFrom.setValue(LocalTime.ofInstant(new SimpleDateFormat("H:mm").parse(workFrom).toInstant(), ZoneId.systemDefault()))
+	}
+
+	def setWorkTo(String workTo) {
+		this.workTo.setValue(LocalTime.ofInstant(new SimpleDateFormat("H:mm").parse(workTo).toInstant(), ZoneId.systemDefault()))
+	}
+
+	def setTitle(String title) {
+		workTitle.setText(title)
+	}
+
+	def setKind(String kind) {
+		workKind.getSelectionModel().select("${kind}")
+	}
+
+	def setDetail(String detail) {
+		workDetail.setText(detail)
 	}
 
 	private class Delta {

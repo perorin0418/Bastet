@@ -18,5 +18,14 @@ class App {
 		if(splash != null) {
 			splash.close();
 		}
+
+		// TODO メモリ使用量の調査
+//		Timer timer = new Timer()
+//		TimerTask task = new TimerTask() {
+//			public void run() {
+//				System.gc()
+//			}
+//		}
+//		timer.scheduleAtFixedRate(task, 60000, 3000)
     }
 }

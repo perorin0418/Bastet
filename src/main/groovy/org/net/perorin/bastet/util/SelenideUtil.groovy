@@ -3,8 +3,6 @@ package org.net.perorin.bastet.util;
 import static com.codeborne.selenide.Condition.*
 import static com.codeborne.selenide.Selenide.*
 
-import java.text.SimpleDateFormat
-
 import org.net.perorin.bastet.data.JobData
 import org.net.perorin.bastet.window.LoadingWindow
 import org.openqa.selenium.By
@@ -23,7 +21,7 @@ class SelenideUtil {
 		Configuration.holdBrowserOpen = true
 
 		// 使用するブラウザ
-		Configuration.browser = SqlUtil.getCodeParameter("SelenideBrowser").Para1
+		Configuration.browser = SqlUtil.getParameter("SelenideBrowser").Para1
 
 		// 失敗時にHTMLを保存しない
 		Configuration.savePageSource = false
@@ -41,12 +39,14 @@ class SelenideUtil {
 	static def login() {
 		SelenideUtil.config()
 		LoadingWindow.appendTextLine("Selenide設定完了")
-		open(SqlUtil.getCodeParameter("TeamSpititURL").Para1)
+		LoadingWindow.appendTextLine("WebDriver起動中")
+		open(SqlUtil.getParameter("TeamSpititURL").Para1)
+		LoadingWindow.appendTextLine("WebDriver起動完了")
 		LoadingWindow.appendTextLine("ログイン画面展開")
 
-		String mailaddress = SqlUtil.getCodeParameter("TeamSpiritMailAddress").Para1
+		String mailaddress = SqlUtil.getParameter("TeamSpiritMailAddress").Para1
 		$("#username").setValue(mailaddress)
-		$("#password").setValue(Util.decrypt(mailaddress, SqlUtil.getCodeParameter("TeamSpiritPassword").Para1))
+		$("#password").setValue(Util.decrypt(mailaddress, SqlUtil.getParameter("TeamSpiritPassword").Para1))
 		$("#Login").click()
 		LoadingWindow.appendTextLine("ログイン成功")
 	}
@@ -58,12 +58,13 @@ class SelenideUtil {
 		$(By.className("wt-勤務表")).waitUntil(visible, 10000).click()
 		LoadingWindow.appendTextLine("勤務表表示")
 
-		// 現在日付取得
-		String date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime())
-
-		// 今日の工数実績画面を開く
-		//		$("#daylyWorkCell" + date).waitUntil(visible, 10000).click()
-		$("#dailyWorkCell2019-11-29").waitUntil(visible, 10000).click()
+		// 実績画面を開く
+		SelenideElement ele = $(By.cssSelector("td.vjob div.png-add")).waitUntil(visible, 10000)
+		while(!ele.exists()) {
+			$('#nextMonthButton').waitUntil(visible, 10000).click()
+			ele = $(By.cssSelector("td.vjob div.png-add")).waitUntil(visible, 10000)
+		}
+		ele.waitUntil(visible, 10000).click()
 		LoadingWindow.appendTextLine("工数実績表示")
 
 		// ジョブアサインをクリック
@@ -80,7 +81,6 @@ class SelenideUtil {
 			SelenideElement e = $("#empJobRightTableRow" + i).waitUntil(visible, 10000)
 			if(e.exists()) {
 				JobData jobData = new JobData()
-				jobData.date = date
 				jobData.code = e.find(By.cssSelector("td :nth-child(2)")).text
 				jobData.name = e.find(By.cssSelector("td :nth-child(3)")).text
 				jobData.kind = e.find(By.cssSelector("td :nth-child(4)")).find(By.tagName("select")).getValue()

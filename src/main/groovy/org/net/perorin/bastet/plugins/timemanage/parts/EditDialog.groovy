@@ -1,5 +1,6 @@
 package org.net.perorin.bastet.plugins.timemanage.parts
 
+import org.net.perorin.bastet.data.WorkData
 import org.net.perorin.bastet.util.Util
 
 import javafx.fxml.FXMLLoader
@@ -11,14 +12,19 @@ import javafx.stage.StageStyle
 
 class EditDialog {
 
-	static def showEditDialog(Stage owner, String title, def closure) {
+	static def showEditDialog(Stage owner, WorkData wd, def closure) {
 		FXMLLoader loader = new FXMLLoader(Util.getResourceURL("fxml/EditDialog.fxml"));
 		loader.load();
 		Parent root = loader.getRoot();
 
 		EditDialogController controller = loader.getController();
 		controller.onClose = closure
-		controller.setTitle(title)
+		controller.setWindowTitle(wd.title)
+		controller.setWorkFrom(wd.start)
+		controller.setWorkTo(wd.end)
+		controller.setTitle(wd.title)
+		controller.setKind(wd.work)
+		controller.setDetail(wd.detail)
 
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(Util.getResourceStr("css/application.css"));

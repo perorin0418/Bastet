@@ -3,10 +3,14 @@ package org.net.perorin.bastet.plugins.timemanage.controller
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalTime
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
+import org.net.perorin.bastet.data.WorkData
 import org.net.perorin.bastet.plugins.timemanage.parts.EditDialog
 import org.net.perorin.bastet.util.SmoothishScrollpane
+import org.net.perorin.bastet.util.SqlUtil
+import org.net.perorin.bastet.util.Util
 
 import com.calendarfx.model.Entry
 import com.calendarfx.view.DayView
@@ -42,7 +46,10 @@ import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyEvent
 import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.BorderPane
+import javafx.scene.layout.StackPane
+import javafx.scene.paint.Color
 import javafx.scene.paint.Paint
+import javafx.scene.shape.Rectangle
 import javafx.scene.text.Font
 import javafx.util.Duration
 
@@ -80,6 +87,7 @@ class TimeManageController {
 		initWork()
 		initAgenda()
 		initTable()
+		onPanelChanged()
 	}
 
 	def initClock() {
@@ -96,44 +104,59 @@ class TimeManageController {
 			double secProgress = Double.parseDouble(new SimpleDateFormat("ss").format(c.getTime())) * (100 / 60) / 100
 
 			if(hourCurrent != hourProgress) {
-				new Timeline(
-						new KeyFrame(
-						Duration.ZERO,
-						new KeyValue(hour.progressProperty(), hourCurrent)
-						),
-						new KeyFrame(
-						Duration.millis(100),
-						new KeyValue(hour.progressProperty(), hourProgress)
-						)
-						).play()
+				if(Util.getConfig().animation.clock.smooth) {
+					new Timeline(
+							new KeyFrame(
+							Duration.ZERO,
+							new KeyValue(hour.progressProperty(), hourCurrent)
+							),
+							new KeyFrame(
+							Duration.millis(100),
+							new KeyValue(hour.progressProperty(), hourProgress)
+							)
+							).play()
+				}else {
+					hour.setProgress(hourProgress)
+				}
 				hourCurrent = hourProgress
+
+				// 時間毎にテーブルを更新
+				onPanelChanged()
 			}
 
 			if(minCurrent != minProgress) {
-				new Timeline(
-						new KeyFrame(
-						Duration.ZERO,
-						new KeyValue(minute.progressProperty(), minCurrent)
-						),
-						new KeyFrame(
-						Duration.millis(100),
-						new KeyValue(minute.progressProperty(), minProgress)
-						)
-						).play()
+				if(Util.getConfig().animation.clock.smooth) {
+					new Timeline(
+							new KeyFrame(
+							Duration.ZERO,
+							new KeyValue(minute.progressProperty(), minCurrent)
+							),
+							new KeyFrame(
+							Duration.millis(100),
+							new KeyValue(minute.progressProperty(), minProgress)
+							)
+							).play()
+				}else {
+					minute.setProgress(minProgress)
+				}
 				minCurrent = minProgress
 			}
 
 			if(secCurrent != secProgress) {
-				new Timeline(
-						new KeyFrame(
-						Duration.ZERO,
-						new KeyValue(second.progressProperty(), secCurrent)
-						),
-						new KeyFrame(
-						Duration.millis(100),
-						new KeyValue(second.progressProperty(), secProgress)
-						)
-						).play()
+				if(Util.getConfig().animation.clock.smooth) {
+					new Timeline(
+							new KeyFrame(
+							Duration.ZERO,
+							new KeyValue(second.progressProperty(), secCurrent)
+							),
+							new KeyFrame(
+							Duration.millis(100),
+							new KeyValue(second.progressProperty(), secProgress)
+							)
+							).play()
+				}else {
+					second.setProgress(secProgress)
+				}
 				secCurrent = secProgress
 			}
 
@@ -186,6 +209,8 @@ class TimeManageController {
 				return
 			}
 
+			// 予定表の設定
+
 			// 開始時刻
 			LocalTime startTime = null
 			if(workFrom.getValue() != null) {
@@ -211,8 +236,21 @@ class TimeManageController {
 			entry.setTitle(workTitle.getText())
 			entry.setInterval(startTime, endTime)
 			agendaEntryList << entry
-
 			datasetAgenda()
+
+			// テーブルの設定
+			WorkTableData data = new WorkTableData(
+					workTitle.getText(),
+					workKind.getValue(),
+					workDetail.getText(),
+					DateTimeFormatter.ofPattern("H:mm").format(startTime),
+					DateTimeFormatter.ofPattern("H:mm").format(endTime))
+			data.metaClass.jobCode = workKind.getValue().jobCode
+			data.metaClass.jobName = workKind.getValue().jobName
+			data.metaClass.jobKind = workKind.getValue().jobKind
+			data.metaClass.jobAlias = workKind.getValue().jobAlias
+			workDatas << data
+			putDatabase()
 		})
 	}
 
@@ -240,13 +278,6 @@ class TimeManageController {
 			it.setCalendar(dayView.getCalendarSources().first().getCalendars().first())
 		})
 
-		// コンテキストメニューを削除
-		dayView.setContextMenuCallback({})
-		dayView.setEntryContextMenuCallback({})
-		dayView.setEntryDetailsCallback({})
-		dayView.setEntryDetailsPopOverContentCallback({})
-		dayView.setDateDetailsCallback({})
-
 		// TODO 時間を変更できるようにする
 		// 開始時刻設定
 		dayView.setStartTime(LocalTime.of(8, 30))
@@ -254,25 +285,31 @@ class TimeManageController {
 
 		dayView.setStyle("-fx-background-color: transparent;")
 
-		agendaPane.setCenter(dayView)
+		// 透明の四角形を重ねてクリックできないようにする。
+		agendaPane.setCenter(new StackPane(dayView, new Rectangle(248, 1680, Color.TRANSPARENT)))
 	}
 
 	def initTable() {
 
 
 		JFXTreeTableColumn<WorkTableData, String> titleCol = new JFXTreeTableColumn<>("タイトル")
+		Util.addTooltipToColumnCells(titleCol)
 		titleCol.setCellValueFactory({param -> param.getValue().getValue().title})
-		titleCol.setPrefWidth(190)
+		titleCol.setPrefWidth(185)
 		JFXTreeTableColumn<WorkTableData, String> workCol = new JFXTreeTableColumn<>("作業種類")
+		Util.addTooltipToColumnCells(workCol)
 		workCol.setCellValueFactory({param -> param.getValue().getValue().work})
-		workCol.setPrefWidth(190)
+		workCol.setPrefWidth(185)
 		JFXTreeTableColumn<WorkTableData, String> startCol = new JFXTreeTableColumn<>("開始時間")
+		Util.addTooltipToColumnCells(startCol)
 		startCol.setCellValueFactory({param -> param.getValue().getValue().start})
 		startCol.setPrefWidth(78)
 		JFXTreeTableColumn<WorkTableData, String> endCol = new JFXTreeTableColumn<>("終了時間")
+		Util.addTooltipToColumnCells(endCol)
 		endCol.setCellValueFactory({param -> param.getValue().getValue().end})
 		endCol.setPrefWidth(78)
 		JFXTreeTableColumn<WorkTableData, String> editCol = new JFXTreeTableColumn<>("")
+		editCol.setPrefWidth(55)
 		editCol.setCellFactory({
 			return new TreeTableCell<WorkTableData, String>() {
 
@@ -289,10 +326,26 @@ class TimeManageController {
 								btn.setTextFill(Paint.valueOf("#2ea9df"))
 								btn.setButtonType(ButtonType.FLAT)
 								btn.setStyle("-fx-background-color: #08192D;")
-								btn.setOnAction( {event ->
-									EditDialog.showEditDialog(tablePane.getScene().getWindow(), workDatas.get(getIndex()).title.get(), {
-										println "fuga"
-									})
+								btn.setOnAction( {
+									EditDialog.showEditDialog(
+											tablePane.getScene().getWindow(),
+											toWorkData(workDatas.get(getIndex()), new WorkData()), { WorkData wd ->
+
+												// テーブルの更新
+												workDatas.get(getIndex()).title.set(wd.title)
+												workDatas.get(getIndex()).work.set(wd.work)
+												workDatas.get(getIndex()).detail.set(wd.detail)
+												workDatas.get(getIndex()).start.set(wd.start)
+												workDatas.get(getIndex()).end.set(wd.end)
+												putDatabase()
+
+												// 予定表の更新
+												agendaEntryList.get(getIndex()).setTitle(wd.title)
+												LocalTime startTime = LocalTime.ofInstant(new SimpleDateFormat("H:mm").parse(wd.start).toInstant(), ZoneId.systemDefault())
+												LocalTime endTime = LocalTime.ofInstant(new SimpleDateFormat("H:mm").parse(wd.end).toInstant(), ZoneId.systemDefault())
+												agendaEntryList.get(getIndex()).setInterval(startTime, endTime)
+												datasetAgenda()
+											})
 								});
 								setGraphic(btn);
 								setText(null);
@@ -301,6 +354,7 @@ class TimeManageController {
 					}
 		})
 		JFXTreeTableColumn<WorkTableData, String> delCol = new JFXTreeTableColumn<>("")
+		delCol.setPrefWidth(55)
 		delCol.setCellFactory({
 			return new TreeTableCell<WorkTableData, String>() {
 
@@ -317,8 +371,16 @@ class TimeManageController {
 								btn.setTextFill(Paint.valueOf("#2ea9df"))
 								btn.setButtonType(ButtonType.FLAT)
 								btn.setStyle("-fx-background-color: #08192D;")
-								btn.setOnAction( {event ->
+								btn.setOnAction( {
+
+									// テーブルの更新
 									workDatas.remove(getIndex())
+									putDatabase()
+
+									// 予定表の更新
+									agendaEntryList.get(getIndex()).setCalendar(null)
+									agendaEntryList.remove(getIndex())
+									datasetAgenda()
 								});
 								setGraphic(btn);
 								setText(null);
@@ -344,8 +406,106 @@ class TimeManageController {
 		tablePane.getChildren().add(table)
 	}
 
-	def datasetTable() {
+	def putDatabase() {
+		Calendar cal = Calendar.getInstance()
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd")
+		def list = []
+		workDatas.each {
+			def obj = new Object()
+			obj.metaClass.Date = sdf.format(cal.getTime())
+			obj.metaClass.WorkTitle = it.title.get()
+			obj.metaClass.WorkDetail = it.detail.get()
+			obj.metaClass.WorkStart = it.start.get()
+			obj.metaClass.WorkEnd = it.end.get()
+			obj.metaClass.JobCode = it.jobCode
+			obj.metaClass.JobName = it.jobName
+			obj.metaClass.JobKind = it.jobKind
+			obj.metaClass.JobAlias = it.jobAlias
+			list << obj
+		}
+		SqlUtil.addWorkData(list)
+	}
 
+	def onPanelChanged() {
+
+		// 作業種類の更新
+		def list = FXCollections.observableArrayList()
+		SqlUtil.getJobData().each {
+			if(it.alias == "") {
+				if(it.kind != "") {
+					def data = "[${it.kind}]${it.name}"
+					data.metaClass.jobCode = "${it.code}"
+					data.metaClass.jobName = "${it.name}"
+					data.metaClass.jobKind = "${it.kind}"
+					data.metaClass.jobAlias = "${it.alias}"
+					list << data
+				}else {
+					def data = "${it.name}"
+					data.metaClass.jobCode = "${it.code}"
+					data.metaClass.jobName = "${it.name}"
+					data.metaClass.jobKind = "${it.kind}"
+					data.metaClass.jobAlias = "${it.alias}"
+					list << data
+				}
+			}
+		}
+		workKind.setItems(list)
+
+		agendaEntryList.clear()
+		workDatas.clear()
+		def workList = SqlUtil.getWorkData().each {
+
+			LocalTime startTime = LocalTime.ofInstant(new SimpleDateFormat("H:mm").parse(it.workStart).toInstant(), ZoneId.systemDefault())
+			LocalTime endTime = LocalTime.ofInstant(new SimpleDateFormat("H:mm").parse(it.workEnd).toInstant(), ZoneId.systemDefault())
+
+			// 予定表の更新
+			Entry<String> entry = new Entry()
+			entry.setTitle(it.workTitle)
+			entry.setInterval(startTime, endTime)
+			agendaEntryList << entry
+			datasetAgenda()
+
+			// テーブルの設定
+			def workKind
+			if(it.jobAlias == "") {
+				if(it.jobKind != "") {
+					workKind = "[${it.jobKind}]${it.jobName}"
+				}else {
+					workKind = "${it.jobName}"
+				}
+			}
+			WorkTableData data = new WorkTableData(
+					it.workTitle,
+					workKind,
+					it.workDetail,
+					it.workStart,
+					it.workEnd)
+			data.metaClass.jobCode = it.jobCode
+			data.metaClass.jobName = it.jobName
+			data.metaClass.jobKind = it.jobKind
+			data.metaClass.jobAlias = it.jobAlias
+			workDatas << data
+		}
+
+		// TODO 現在時刻に合わせて予定表のスクロール位置を調整する。
+	}
+
+	static WorkData toWorkData(WorkTableData wtd, WorkData wd){
+		wd.title = wtd.title.get()
+		wd.work = wtd.work.get()
+		wd.detail = wtd.detail.get()
+		wd.start = wtd.start.get()
+		wd.end = wtd.end.get()
+		return wd
+	}
+
+	static WorkTableData toWorkTableData(WorkData work, WorkTableData wtd) {
+		wtd.title.set(work.title)
+		wtd.work.set(work.work)
+		wtd.detail.set(work.detail)
+		wtd.start.set(work.start)
+		wtd.end.set(work.end)
+		return wtd
 	}
 
 	private class WorkTableData extends RecursiveTreeObject<WorkTableData> {

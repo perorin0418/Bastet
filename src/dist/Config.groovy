@@ -5,3 +5,8 @@ sql{
 	}
 }
 
+animation{
+	clock{
+		smooth = true
+	}
+}

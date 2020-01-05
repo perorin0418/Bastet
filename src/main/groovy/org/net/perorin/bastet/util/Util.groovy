@@ -7,12 +7,8 @@ import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
 import org.apache.commons.lang3.RandomStringUtils
-import org.net.perorin.bastet.data.JobData
 
-import javafx.scene.control.TableCell
-import javafx.scene.control.TableColumn
 import javafx.scene.control.Tooltip
-import javafx.util.Callback
 
 static def getResourceURL(def resource){
 	return Thread.currentThread().getContextClassLoader().getResource(resource)
@@ -78,6 +74,13 @@ static def encrypt(String salt, String message) {
 	return Base64.getEncoder().encodeToString(byteCipherText);
 }
 
+/**
+ * 複合化
+ *
+ * @param salt ソルト
+ * @param message 暗号化文字列
+ * @return 複合化後
+ */
 static def decrypt(String salt, String cryptText) {
 	byte[] key = Util.getKey().getBytes();
 	MessageDigest sha = MessageDigest.getInstance("SHA-256");
@@ -100,7 +103,7 @@ static def decrypt(String salt, String cryptText) {
 static def getKey() {
 
 	// 鍵ファイル取得
-	File keyFile = new File(SqlUtil.getCodeParameter("AES-Key-Path").Para1)
+	File keyFile = new File(SqlUtil.getParameter("AES-Key-Path").Para1)
 
 	// MACアドレスのハッシュ値取得
 	int mac = Math.abs(Util.getMacAddress().hashCode())
@@ -130,7 +133,7 @@ static def createKey(File path) {
 	keyFile.createNewFile()
 	// ランダム文字列生成
 	keyFile.text = RandomStringUtils.randomAlphabetic(1024 * 1024)
-	SqlUtil.setCodeParameter("AES-Key-Path", [keyFile.getAbsolutePath().replace('\\', '/')])
+	SqlUtil.setParameter("AES-Key-Path", [keyFile.getAbsolutePath().replace('\\', '/')])
 }
 
 static def getConfig() {
@@ -151,11 +154,11 @@ static def execPowerShell(def ps1, def args) {
 	return msg.last()
 }
 
-static <T> void addTooltipToColumnCells(TableColumn<JobData,T> column) {
+static def addTooltipToColumnCells(def column) {
 
-	Callback<TableColumn<JobData, T>, TableCell<JobData,T>> existingCellFactory = column.getCellFactory()
+	def existingCellFactory = column.getCellFactory()
 	column.setCellFactory({c ->
-		TableCell<JobData, T> cell = existingCellFactory.call(c)
+		def cell = existingCellFactory.call(c)
 
 		Tooltip tooltip = new Tooltip()
 		tooltip.textProperty().bind(cell.itemProperty().asString())
@@ -164,3 +167,21 @@ static <T> void addTooltipToColumnCells(TableColumn<JobData,T> column) {
 		return cell
 	})
 }
+
+static def redirectFollowingDownload( String url, String filename ) {
+	new URL(url).openConnection().with { conn ->
+		conn.instanceFollowRedirects = false
+		url = conn.getHeaderField("Location")
+		if( !url ) {
+			new File( filename ).withOutputStream { out ->
+				conn.inputStream.with { inp ->
+					out << inp
+					inp.close()
+				}
+			}
+		}
+	}
+}
+
+
+

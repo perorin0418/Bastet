@@ -89,18 +89,21 @@ class WindowController {
 		dashBoard.metaClass.bodyName = {"DashBoard"}
 		machineLearning.metaClass.bodyName = {"MachineLearning"}
 
-		timeManage.setFont(Font.loadFont(Util.getResourceStr("font/SourceHanSansJP-Normal.otf"), 24))
-		jobSetting.setFont(Font.loadFont(Util.getResourceStr("font/SourceHanSansJP-Normal.otf"), 21))
-		teamSpirit.setFont(Font.loadFont(Util.getResourceStr("font/SourceHanSansJP-Normal.otf"), 20))
-		dashBoard.setFont(Font.loadFont(Util.getResourceStr("font/SourceHanSansJP-Normal.otf"), 16))
-		machineLearning.setFont(Font.loadFont(Util.getResourceStr("font/SourceHanSansJP-Normal.otf"), 24))
+		timeManage.setFont(Font.font("源ノ角ゴシック JP Normal", 24))
+		jobSetting.setFont(Font.font("源ノ角ゴシック JP Normal", 21))
+		teamSpirit.setFont(Font.font("源ノ角ゴシック JP Normal", 20))
+		dashBoard.setFont(Font.font("源ノ角ゴシック JP Normal", 16))
+		machineLearning.setFont(Font.font("源ノ角ゴシック JP Normal", 24))
 
 		def list = [timeManage, jobSetting, teamSpirit, dashBoard, machineLearning]
 		list.each({button ->
+			FXMLLoader loader = new FXMLLoader(Util.getResourceURL("fxml/" + button.bodyName() + ".fxml"));
+			bodyMap[button.bodyName()] = loader.load()
+			def controller = loader.getController()
 			button.setOnMouseClicked({
 				changeBody(button.bodyName())
+				controller.onPanelChanged()
 			})
-			bodyMap[button.bodyName()] = FXMLLoader.load(Util.getResourceURL("fxml/" + button.bodyName() + ".fxml"))
 		})
 	}
 
