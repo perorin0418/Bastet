@@ -12,7 +12,7 @@ class App {
 
 		// ラベルの文字を強制アンチエイリアシングする
 		System.setProperty("prism.lcdtext", "false");
-        Window.launch(Window.class, args)
+        Window.launch(Window.class)
 
 		SplashScreen splash = SplashScreen.getSplashScreen();
 		if(splash != null) {
