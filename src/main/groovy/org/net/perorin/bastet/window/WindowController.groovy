@@ -1,5 +1,6 @@
 package org.net.perorin.bastet.window
 
+import org.net.perorin.bastet.tray.TaskTray
 import org.net.perorin.bastet.util.Util
 
 import com.jfoenix.controls.JFXButton
@@ -30,11 +31,14 @@ class WindowController {
 	@FXML JFXButton teamSpirit
 	@FXML JFXButton dashBoard
 	@FXML JFXButton machineLearning
+	@FXML JFXButton tasks
+
 	@FXML ImageView timeManage_img
 	@FXML ImageView jobSetting_img
 	@FXML ImageView teamSpirit_img
 	@FXML ImageView dashBoard_img
 	@FXML ImageView machineLearning_img
+	@FXML ImageView tasks_img
 
 	// ボディ
 	@FXML AnchorPane body
@@ -50,7 +54,7 @@ class WindowController {
 
 	}
 
-	def handleWindowShowEvent() {
+	def initBody() {
 		body.setTopAnchor(bodyMap[timeManage.bodyName()], 20.0);
 		body.setLeftAnchor(bodyMap[timeManage.bodyName()], 24.0);
 		body.getChildren().add(bodyMap[timeManage.bodyName()])
@@ -72,6 +76,15 @@ class WindowController {
 		// ×ボタンで最小化
 		closeButton.setOnMouseClicked({
 			stage.hide()
+			TaskTray.show = true
+			Window.show = false
+			while(true) {
+				if(Window.show) {
+					stage.show()
+					break
+				}
+				Thread.sleep(1000)
+			}
 		})
 
 		timeManage_img.setImage(new Image(Util.getResourceStr("img/apply/Programming-Watch-icon.png")))
@@ -79,6 +92,7 @@ class WindowController {
 		teamSpirit_img.setImage(new Image(Util.getResourceStr("img/custom/teamspirit.png")))
 		dashBoard_img.setImage(new Image(Util.getResourceStr("img/apply/Transport-Speedometer-icon.png")))
 		machineLearning_img.setImage(new Image(Util.getResourceStr("img/apply/Healthcare-Brain-icon.png")))
+		tasks_img.setImage(new Image(Util.getResourceStr("img/apply/Business-Todo-List-icon.png")))
 	}
 
 	def initSide() {
@@ -87,14 +101,16 @@ class WindowController {
 		teamSpirit.metaClass.bodyName = {"TeamSpirit"}
 		dashBoard.metaClass.bodyName = {"DashBoard"}
 		machineLearning.metaClass.bodyName = {"MachineLearning"}
+		tasks.metaClass.bodyName = {"Tasks"}
 
 		timeManage.setFont(Font.font("源ノ角ゴシック JP Normal", 24))
-		jobSetting.setFont(Font.font("源ノ角ゴシック JP Normal", 21))
+		jobSetting.setFont(Font.font("源ノ角ゴシック JP Normal", 22))
 		teamSpirit.setFont(Font.font("源ノ角ゴシック JP Normal", 20))
-		dashBoard.setFont(Font.font("源ノ角ゴシック JP Normal", 16))
+		dashBoard.setFont(Font.font("源ノ角ゴシック JP Normal", 19))
 		machineLearning.setFont(Font.font("源ノ角ゴシック JP Normal", 24))
+		tasks.setFont(Font.font("源ノ角ゴシック JP Normal", 24))
 
-		def list = [timeManage, jobSetting, teamSpirit, dashBoard, machineLearning]
+		def list = [timeManage, jobSetting, teamSpirit, dashBoard, machineLearning, tasks]
 		list.each({button ->
 			FXMLLoader loader = new FXMLLoader(Util.getResourceURL("fxml/" + button.bodyName() + ".fxml"));
 			bodyMap[button.bodyName()] = loader.load()

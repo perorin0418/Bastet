@@ -1,10 +1,12 @@
-package org.net.perorin.bastet.window;
+package org.net.perorin.bastet.window
 
 import java.security.SecureRandom
 import java.util.logging.Logger
 
 import org.net.perorin.bastet.util.Util
 
+import javafx.beans.value.ChangeListener
+import javafx.beans.value.ObservableValue
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import javafx.scene.Scene
@@ -18,34 +20,45 @@ class LoadingWindow {
 
 		@Override
 		protected Integer initialValue() {
-			SecureRandom r = SecureRandom.getInstance("SHA1PRNG");
-			return new Integer(r.nextInt());
+			SecureRandom r = SecureRandom.getInstance("SHA1PRNG")
+			return new Integer(r.nextInt())
 		}
 	}
 
 	static def loadingMap = [:]
 
 	static def showLoadingWindow(Stage owner, String title, def closure) {
-		FXMLLoader loader = new FXMLLoader(Util.getResourceURL("fxml/LoadingWindow.fxml"));
-		loader.load();
-		Parent root = loader.getRoot();
+		FXMLLoader loader = new FXMLLoader(Util.getResourceURL("fxml/LoadingWindow.fxml"))
+		loader.load()
+		Parent root = loader.getRoot()
 
-		LoadingController controller = loader.getController();
+		LoadingController controller = loader.getController()
 		controller.start(closure)
 		controller.setTitle(title)
 
-		Scene scene = new Scene(root);
-		scene.getStylesheets().add(Util.getResourceStr("css/application.css"));
+		Scene scene = new Scene(root)
+		scene.getStylesheets().add(Util.getResourceStr("css/application.css"))
 		scene.setFill(Color.TRANSPARENT)
 
-		Stage dialog = new Stage(StageStyle.UTILITY);
+		Stage dialog = new Stage(StageStyle.UTILITY)
 		controller.setStage(dialog)
 		dialog.setX(owner.getX() + owner.getWidth()/2 - 100)
 		dialog.setY(owner.getY() + owner.getHeight()/2 - 150)
-		dialog.initStyle(StageStyle.TRANSPARENT);
-		dialog.setScene(scene);
-		dialog.initOwner(owner);
-		dialog.setResizable(false);
+		dialog.initStyle(StageStyle.TRANSPARENT)
+		dialog.setScene(scene)
+		dialog.initOwner(owner)
+		dialog.setResizable(false)
+		dialog.metaClass.isForeground = false
+		dialog.focusedProperty().addListener(new ChangeListener<Boolean>() {
+					@Override
+					public void changed(ObservableValue<? extends Boolean> ov, Boolean onHidden, Boolean onShown) {
+						if(onHidden) {
+							dialog.isForeground = false
+						}else if(onShown) {
+							dialog.isForeground = true
+						}
+					}
+				})
 		dialog.show()
 	}
 

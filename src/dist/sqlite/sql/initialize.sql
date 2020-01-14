@@ -17,4 +17,4 @@ SELECT * FROM JobData ORDER BY Code, Alias;
 DROP TABLE WorkData;
 CREATE TABLE WorkData (Date, WorkTitle, WorkDetail, WorkStart, WorkEnd, JobCode, JobName, JobKind, JobAlias,
        PRIMARY KEY(Date, WorkTitle, WorkDetail, WorkStart, WorkEnd, JobCode, JobName, JobKind, JobAlias) );
-SELECT * FROM WorkData ORDER BY WorkStart;
+SELECT * FROM WorkData ORDER BY Date, WorkStart;

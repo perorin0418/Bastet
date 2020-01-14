@@ -1,15 +1,14 @@
 package org.net.perorin.bastet.window
 
-import java.awt.SystemTray
-import java.awt.TrayIcon
-import java.awt.image.BufferedImage
+import java.util.concurrent.Executors
 
-import javax.imageio.ImageIO
-
+import org.net.perorin.bastet.tray.TaskTray
 import org.net.perorin.bastet.util.Util
 
 import javafx.application.Application
 import javafx.application.Platform
+import javafx.beans.value.ChangeListener
+import javafx.beans.value.ObservableValue
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import javafx.scene.Scene
@@ -20,10 +19,12 @@ import javafx.stage.StageStyle
 
 class Window extends Application {
 
-	private TrayIcon trayIcon
+	static boolean show = true
+	static boolean stopSleep = false
 
 	@Override
 	public void start(Stage primaryStage) {
+		TaskTray.taskTray()
 		Platform.setImplicitExit(false);
 
 		FXMLLoader loader = new FXMLLoader(Util.getResourceURL("fxml/Window.fxml"))
@@ -36,33 +37,46 @@ class Window extends Application {
 		scene.getStylesheets().add(Util.getResourceStr("css/application.css"));
 		scene.setFill(Color.TRANSPARENT)
 
-		initSystemTray(primaryStage);
 		primaryStage.getIcons().add(new Image(Util.getResourceStr("img/icon/mythology.png")))
 		primaryStage.initStyle(StageStyle.TRANSPARENT);
 		primaryStage.setTitle("Bastet")
 		primaryStage.setScene(scene);
-		primaryStage.setOnShown({
-			controller.handleWindowShowEvent()
-		})
+		primaryStage.metaClass.isForeground = false
+		primaryStage.focusedProperty().addListener(new ChangeListener<Boolean>() {
+					@Override
+					public void changed(ObservableValue<? extends Boolean> ov, Boolean onHidden, Boolean onShown) {
+						if(onHidden) {
+							primaryStage.isForeground = false
+						}else if(onShown) {
+							primaryStage.isForeground = true
+						}
+					}
+				})
 		primaryStage.show()
-	}
 
-	def initSystemTray(Stage primaryStage) {
+		controller.initBody()
 
-		if (!SystemTray.isSupported()) {
-			return;
+		def service = Executors.newSingleThreadExecutor()
+		service.execute {
+			while(true) {
+				if(!stopSleep) {
+					Platform.runLater({
+						boolean active = Stage.getWindows()
+								.stream()
+								.filter({it.metaClass.hasProperty(it, "isForeground") != null})
+								.map({it.isForeground})
+								.reduce({it1, it2 ->
+									it1 | it2
+								})
+								.get()
+						if(!active) {
+							Thread.sleep(200)
+						}
+					})
+				}
+				Thread.sleep(100)
+			}
 		}
-
-		BufferedImage img = ImageIO.read(Util.getResourceURL("img/icon/mythology.png"));
-		this.trayIcon = new TrayIcon(img);
-		this.trayIcon.setImageAutoSize(true);
-		this.trayIcon.addActionListener({
-			Platform.runLater({
-				primaryStage.show();
-			});
-		});
-		this.trayIcon.setToolTip("show/hide");
-		SystemTray systemTray = SystemTray.getSystemTray();
-		systemTray.add(trayIcon);
+		service.shutdown()
 	}
 }

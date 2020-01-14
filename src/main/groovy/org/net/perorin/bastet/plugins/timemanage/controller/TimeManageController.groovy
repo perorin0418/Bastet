@@ -61,6 +61,7 @@ class TimeManageController {
 	@FXML JFXSpinner second // 秒
 	@FXML Label day // 日
 	@FXML Label weekAndMonth // 月
+	@FXML Label clockLabel // 現在時間
 
 	// 作業記録
 	@FXML AnchorPane workArea
@@ -94,10 +95,11 @@ class TimeManageController {
 
 		day.setFont(Font.font("源ノ角ゴシック JP Normal", 64))
 		weekAndMonth.setFont(Font.font("源ノ角ゴシック JP Normal", 18))
+		clockLabel.setFont(Font.font("源ノ角ゴシック JP Normal", 18))
 		double hourCurrent = 0
 		double minCurrent = 0
 		double secCurrent = 0
-		Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, {
+		Timeline clock = new Timeline(1d, new KeyFrame(Duration.ZERO, {
 			Calendar c = Calendar.getInstance()
 			double hourProgress = Double.parseDouble(new SimpleDateFormat("hh").format(c.getTime())) * (100 / 12) / 100
 			double minProgress = Double.parseDouble(new SimpleDateFormat("mm").format(c.getTime())) * (100 / 60) / 100
@@ -105,7 +107,7 @@ class TimeManageController {
 
 			if(hourCurrent != hourProgress) {
 				if(Util.getConfig().animation.clock.smooth) {
-					new Timeline(
+					new Timeline(30d,
 							new KeyFrame(
 							Duration.ZERO,
 							new KeyValue(hour.progressProperty(), hourCurrent)
@@ -126,7 +128,7 @@ class TimeManageController {
 
 			if(minCurrent != minProgress) {
 				if(Util.getConfig().animation.clock.smooth) {
-					new Timeline(
+					new Timeline(30d,
 							new KeyFrame(
 							Duration.ZERO,
 							new KeyValue(minute.progressProperty(), minCurrent)
@@ -144,7 +146,7 @@ class TimeManageController {
 
 			if(secCurrent != secProgress) {
 				if(Util.getConfig().animation.clock.smooth) {
-					new Timeline(
+					new Timeline(30d,
 							new KeyFrame(
 							Duration.ZERO,
 							new KeyValue(second.progressProperty(), secCurrent)
@@ -162,6 +164,7 @@ class TimeManageController {
 
 			day.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("dd", new Locale("en","US"))))
 			weekAndMonth.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("E, MMM", new Locale("en","US"))))
+			clockLabel.setText(LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss")))
 		}),new KeyFrame(Duration.seconds(1)));
 		clock.setCycleCount(Animation.INDEFINITE);
 		clock.play();
@@ -290,7 +293,6 @@ class TimeManageController {
 	}
 
 	def initTable() {
-
 
 		JFXTreeTableColumn<WorkTableData, String> titleCol = new JFXTreeTableColumn<>("タイトル")
 		Util.addTooltipToColumnCells(titleCol)

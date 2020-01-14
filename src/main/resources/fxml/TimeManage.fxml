@@ -1,36 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.net.perorin.bastet.plugins.timemanage.controller.TimeManageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/8.0.231" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.net.perorin.bastet.plugins.timemanage.controller.TimeManageController">
    <children>
       <AnchorPane prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;">
          <children>
-            <JFXSpinner fx:id="hour" layoutX="61.0" layoutY="17.0" prefHeight="206.0" prefWidth="206.0" progress="0.21" radius="100.0" startingAngle="90.0" styleClass="hour" />
-            <JFXSpinner fx:id="minute" layoutX="76.0" layoutY="32.0" prefHeight="176.0" prefWidth="176.0" progress="0.21" radius="100.0" startingAngle="90.0" styleClass="minute" />
-            <JFXSpinner fx:id="second" layoutX="91.0" layoutY="47.0" prefHeight="146.0" prefWidth="146.0" progress="0.21" radius="100.0" startingAngle="90.0" styleClass="second" />
-            <BorderPane layoutX="64.0" layoutY="81.0" prefHeight="79.0" prefWidth="200.0">
+            <JFXSpinner fx:id="hour" cache="true" layoutX="61.0" layoutY="17.0" prefHeight="206.0" prefWidth="206.0" progress="0.21" radius="100.0" startingAngle="90.0" styleClass="hour" />
+            <JFXSpinner fx:id="minute" cache="true" layoutX="76.0" layoutY="32.0" prefHeight="176.0" prefWidth="176.0" progress="0.21" radius="100.0" startingAngle="90.0" styleClass="minute" />
+            <JFXSpinner fx:id="second" cache="true" layoutX="91.0" layoutY="47.0" prefHeight="146.0" prefWidth="146.0" progress="0.21" radius="100.0" startingAngle="90.0" styleClass="second" />
+            <BorderPane layoutX="64.0" layoutY="72.0" prefHeight="56.0" prefWidth="200.0">
                <center>
                   <Label fx:id="day" alignment="CENTER" contentDisplay="CENTER" prefHeight="94.0" prefWidth="78.0" text="30" textFill="#2ea9df" BorderPane.alignment="CENTER">
                      <font>
-                        <Font size="64.0" />
+                        <Font size="52.0" />
                      </font>
                   </Label>
                </center>
             </BorderPane>
-            <BorderPane layoutX="64.0" layoutY="65.0" prefHeight="39.0" prefWidth="200.0">
+            <BorderPane layoutX="64.0" layoutY="67.0" prefHeight="27.0" prefWidth="200.0">
                <center>
                   <Label fx:id="weekAndMonth" text="Wed, Sep" textFill="#2ea9df" BorderPane.alignment="CENTER">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </center>
+            </BorderPane>
+            <BorderPane layoutX="83.0" layoutY="144.0" prefHeight="27.0" prefWidth="161.0">
+               <center>
+                  <Label fx:id="clockLabel" text="22:59:10" textFill="#2ea9df" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
                      </font>
                   </Label>
                </center>

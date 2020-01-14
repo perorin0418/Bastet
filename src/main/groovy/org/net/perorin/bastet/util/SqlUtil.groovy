@@ -1,6 +1,8 @@
 package org.net.perorin.bastet.util;
 
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 import org.net.perorin.bastet.data.JobData
 
@@ -103,11 +105,9 @@ class SqlUtil{
 		}
 	}
 
-	static def getWorkData() {
-		Calendar cal = Calendar.getInstance()
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd")
+	static def getWorkData(LocalDate date = LocalDate.now()) {
 		def ret = []
-		SqlUtil.getInstance().eachRow("select * from WorkData where Date = ${sdf.format(cal.getTime())} order by WorkStart"){
+		SqlUtil.getInstance().eachRow("select * from WorkData where Date = ${date.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))} order by WorkStart"){
 			def obj = new Object()
 			obj.metaClass.workTitle = it.WorkTitle
 			obj.metaClass.workDetail = it.WorkDetail

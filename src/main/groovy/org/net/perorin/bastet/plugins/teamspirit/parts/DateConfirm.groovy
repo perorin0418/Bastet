@@ -1,6 +1,7 @@
-package org.net.perorin.bastet.plugins.timemanage.parts
+package org.net.perorin.bastet.plugins.teamspirit.parts
 
-import org.net.perorin.bastet.data.WorkData
+import java.time.LocalDate
+
 import org.net.perorin.bastet.util.Util
 
 import javafx.beans.value.ChangeListener
@@ -12,21 +13,14 @@ import javafx.scene.paint.Color
 import javafx.stage.Stage
 import javafx.stage.StageStyle
 
-class EditDialog {
+class DateConfirm {
 
-	static def showEditDialog(Stage owner, WorkData wd, def closure) {
-		FXMLLoader loader = new FXMLLoader(Util.getResourceURL("fxml/EditDialog.fxml"))
+	static def showDateConfirm(Stage owner, LocalDate date) {
+		FXMLLoader loader = new FXMLLoader(Util.getResourceURL("fxml/DateConfirm.fxml"))
 		loader.load()
 		Parent root = loader.getRoot()
 
-		EditDialogController controller = loader.getController()
-		controller.onClose = closure
-		controller.setWindowTitle(wd.title)
-		controller.setWorkFrom(wd.start)
-		controller.setWorkTo(wd.end)
-		controller.setTitle(wd.title)
-		controller.setKind(wd.work)
-		controller.setDetail(wd.detail)
+		DateConfirmController controller = loader.getController()
 
 		Scene scene = new Scene(root)
 		scene.getStylesheets().add(Util.getResourceStr("css/application.css"))
@@ -34,9 +28,11 @@ class EditDialog {
 
 		Stage dialog = new Stage(StageStyle.UTILITY)
 		controller.stage = dialog
+		controller.setDate(date)
+		controller.onAfterShow()
 
-		dialog.setX(owner.getX() + owner.getWidth()/2 + 50)
-		dialog.setY(owner.getY() + owner.getHeight()/2 + 50)
+		dialog.setX(owner.getX() + owner.getWidth()/2 - 340)
+		dialog.setY(owner.getY() + owner.getHeight()/2 - 268)
 		dialog.initStyle(StageStyle.TRANSPARENT)
 		dialog.setScene(scene)
 		dialog.initOwner(owner)
