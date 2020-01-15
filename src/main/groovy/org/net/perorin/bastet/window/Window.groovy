@@ -1,5 +1,6 @@
 package org.net.perorin.bastet.window
 
+import java.awt.SplashScreen
 import java.util.concurrent.Executors
 
 import org.net.perorin.bastet.tray.TaskTray
@@ -24,7 +25,20 @@ class Window extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+
+		// ラベルの文字を強制アンチエイリアシングする
+		System.setProperty("prism.lcdtext", "false");
+
+		// スプラッシュを削除
+		SplashScreen splash = SplashScreen.getSplashScreen();
+		if(splash != null) {
+			splash.close();
+		}
+
+		// タスクトレイ用のスレッド起動
 		TaskTray.taskTray()
+
+		// ウィンドウ非表示でもJavaFX Threadが終了しないように設定
 		Platform.setImplicitExit(false);
 
 		FXMLLoader loader = new FXMLLoader(Util.getResourceURL("fxml/Window.fxml"))
@@ -61,6 +75,8 @@ class Window extends Application {
 			while(true) {
 				if(!stopSleep) {
 					Platform.runLater({
+
+						// 表示中のウィンドウが無いか判定
 						boolean active = Stage.getWindows()
 								.stream()
 								.filter({it.metaClass.hasProperty(it, "isForeground") != null})

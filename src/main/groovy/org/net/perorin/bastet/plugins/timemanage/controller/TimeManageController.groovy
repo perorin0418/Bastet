@@ -6,8 +6,8 @@ import java.time.LocalTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-import org.net.perorin.bastet.data.WorkData
-import org.net.perorin.bastet.plugins.timemanage.parts.EditDialog
+import org.net.perorin.bastet.plugins.timemanage.parts.WorkDataTable
+import org.net.perorin.bastet.plugins.timemanage.parts.WorkDataTable_Data
 import org.net.perorin.bastet.util.SmoothishScrollpane
 import org.net.perorin.bastet.util.SqlUtil
 import org.net.perorin.bastet.util.Util
@@ -21,18 +21,12 @@ import com.jfoenix.controls.JFXSpinner
 import com.jfoenix.controls.JFXTextArea
 import com.jfoenix.controls.JFXTextField
 import com.jfoenix.controls.JFXTimePicker
-import com.jfoenix.controls.JFXTreeTableColumn
 import com.jfoenix.controls.JFXTreeTableView
-import com.jfoenix.controls.RecursiveTreeItem
-import com.jfoenix.controls.JFXButton.ButtonType
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject
 
 import javafx.animation.Animation
 import javafx.animation.KeyFrame
 import javafx.animation.KeyValue
 import javafx.animation.Timeline
-import javafx.beans.property.SimpleStringProperty
-import javafx.beans.property.StringProperty
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import javafx.event.EventHandler
@@ -40,8 +34,6 @@ import javafx.fxml.FXML
 import javafx.scene.control.Label
 import javafx.scene.control.ScrollPane
 import javafx.scene.control.TextFormatter
-import javafx.scene.control.TreeItem
-import javafx.scene.control.TreeTableCell
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyEvent
 import javafx.scene.layout.AnchorPane
@@ -80,7 +72,7 @@ class TimeManageController {
 
 	// テーブル
 	@FXML AnchorPane tablePane
-	ObservableList<WorkTableData> workDatas
+	ObservableList<WorkDataTable_Data> workDatas
 
 	@FXML
 	def initialize(){
@@ -242,7 +234,7 @@ class TimeManageController {
 			datasetAgenda()
 
 			// テーブルの設定
-			WorkTableData data = new WorkTableData(
+			WorkDataTable_Data data = new WorkDataTable_Data(
 					workTitle.getText(),
 					workKind.getValue(),
 					workDetail.getText(),
@@ -253,7 +245,7 @@ class TimeManageController {
 			data.metaClass.jobKind = workKind.getValue().jobKind
 			data.metaClass.jobAlias = workKind.getValue().jobAlias
 			workDatas << data
-			putDatabase()
+			WorkDataTable.putDatabase(workDatas)
 		})
 	}
 
@@ -293,139 +285,28 @@ class TimeManageController {
 	}
 
 	def initTable() {
-
-		JFXTreeTableColumn<WorkTableData, String> titleCol = new JFXTreeTableColumn<>("タイトル")
-		Util.addTooltipToColumnCells(titleCol)
-		titleCol.setCellValueFactory({param -> param.getValue().getValue().title})
-		titleCol.setPrefWidth(185)
-		JFXTreeTableColumn<WorkTableData, String> workCol = new JFXTreeTableColumn<>("作業種類")
-		Util.addTooltipToColumnCells(workCol)
-		workCol.setCellValueFactory({param -> param.getValue().getValue().work})
-		workCol.setPrefWidth(185)
-		JFXTreeTableColumn<WorkTableData, String> startCol = new JFXTreeTableColumn<>("開始時間")
-		Util.addTooltipToColumnCells(startCol)
-		startCol.setCellValueFactory({param -> param.getValue().getValue().start})
-		startCol.setPrefWidth(78)
-		JFXTreeTableColumn<WorkTableData, String> endCol = new JFXTreeTableColumn<>("終了時間")
-		Util.addTooltipToColumnCells(endCol)
-		endCol.setCellValueFactory({param -> param.getValue().getValue().end})
-		endCol.setPrefWidth(78)
-		JFXTreeTableColumn<WorkTableData, String> editCol = new JFXTreeTableColumn<>("")
-		editCol.setPrefWidth(55)
-		editCol.setCellFactory({
-			return new TreeTableCell<WorkTableData, String>() {
-
-						final JFXButton btn = new JFXButton("編集");
-
-						@Override
-						public void updateItem(String item, boolean empty) {
-							super.updateItem(item, empty);
-							if (empty) {
-								setGraphic(null);
-								setText(null);
-							} else {
-								btn.setRipplerFill(Paint.valueOf("#a5dee4"))
-								btn.setTextFill(Paint.valueOf("#2ea9df"))
-								btn.setButtonType(ButtonType.FLAT)
-								btn.setStyle("-fx-background-color: #08192D;")
-								btn.setOnAction( {
-									EditDialog.showEditDialog(
-											tablePane.getScene().getWindow(),
-											toWorkData(workDatas.get(getIndex()), new WorkData()), { WorkData wd ->
-
-												// テーブルの更新
-												workDatas.get(getIndex()).title.set(wd.title)
-												workDatas.get(getIndex()).work.set(wd.work)
-												workDatas.get(getIndex()).detail.set(wd.detail)
-												workDatas.get(getIndex()).start.set(wd.start)
-												workDatas.get(getIndex()).end.set(wd.end)
-												putDatabase()
-
-												// 予定表の更新
-												agendaEntryList.get(getIndex()).setTitle(wd.title)
-												LocalTime startTime = LocalTime.ofInstant(new SimpleDateFormat("H:mm").parse(wd.start).toInstant(), ZoneId.systemDefault())
-												LocalTime endTime = LocalTime.ofInstant(new SimpleDateFormat("H:mm").parse(wd.end).toInstant(), ZoneId.systemDefault())
-												agendaEntryList.get(getIndex()).setInterval(startTime, endTime)
-												datasetAgenda()
-											})
-								});
-								setGraphic(btn);
-								setText(null);
-							}
-						}
-					}
-		})
-		JFXTreeTableColumn<WorkTableData, String> delCol = new JFXTreeTableColumn<>("")
-		delCol.setPrefWidth(55)
-		delCol.setCellFactory({
-			return new TreeTableCell<WorkTableData, String>() {
-
-						final JFXButton btn = new JFXButton("削除");
-
-						@Override
-						public void updateItem(String item, boolean empty) {
-							super.updateItem(item, empty);
-							if (empty) {
-								setGraphic(null);
-								setText(null);
-							} else {
-								btn.setRipplerFill(Paint.valueOf("#a5dee4"))
-								btn.setTextFill(Paint.valueOf("#2ea9df"))
-								btn.setButtonType(ButtonType.FLAT)
-								btn.setStyle("-fx-background-color: #08192D;")
-								btn.setOnAction( {
-
-									// テーブルの更新
-									workDatas.remove(getIndex())
-									putDatabase()
-
-									// 予定表の更新
-									agendaEntryList.get(getIndex()).setCalendar(null)
-									agendaEntryList.remove(getIndex())
-									datasetAgenda()
-								});
-								setGraphic(btn);
-								setText(null);
-							}
-						}
-					}
-		})
-
-		workDatas = FXCollections.observableArrayList();
-		TreeItem<WorkTableData> root = new RecursiveTreeItem<WorkTableData>(workDatas, {it -> it.getChildren()})
-		JFXTreeTableView<WorkTableData> table = new JFXTreeTableView<>()
-		table.getColumns().addAll(titleCol, workCol, startCol, endCol, editCol, delCol)
-		table.setRoot(root)
-		table.setShowRoot(false)
+		JFXTreeTableView<WorkDataTable_Data> table = WorkDataTable.createWorkDataTable(
+				{tablePane.getScene().getWindow()},
+				{i, wd ->
+					// 予定表の更新
+					agendaEntryList.get(i).setTitle(wd.title)
+					LocalTime startTime = LocalTime.ofInstant(new SimpleDateFormat("H:mm").parse(wd.start).toInstant(), ZoneId.systemDefault())
+					LocalTime endTime = LocalTime.ofInstant(new SimpleDateFormat("H:mm").parse(wd.end).toInstant(), ZoneId.systemDefault())
+					agendaEntryList.get(i).setInterval(startTime, endTime)
+					datasetAgenda()
+				},
+				{i ->
+					// 予定表の更新
+					agendaEntryList.get(i).setCalendar(null)
+					agendaEntryList.remove(i)
+					datasetAgenda()
+				})
 		table.setLayoutX(10)
 		table.setLayoutY(10)
 		table.setPrefWidth(660)
 		table.setPrefHeight(220)
-		Label placeHolder = new Label("no data")
-		placeHolder.setFont(Font.font("源ノ角ゴシック JP Normal", 16))
-		placeHolder.setTextFill(Paint.valueOf("#a5dee4"))
-		table.setPlaceholder(placeHolder)
+		workDatas = table.workDatas
 		tablePane.getChildren().add(table)
-	}
-
-	def putDatabase() {
-		Calendar cal = Calendar.getInstance()
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd")
-		def list = []
-		workDatas.each {
-			def obj = new Object()
-			obj.metaClass.Date = sdf.format(cal.getTime())
-			obj.metaClass.WorkTitle = it.title.get()
-			obj.metaClass.WorkDetail = it.detail.get()
-			obj.metaClass.WorkStart = it.start.get()
-			obj.metaClass.WorkEnd = it.end.get()
-			obj.metaClass.JobCode = it.jobCode
-			obj.metaClass.JobName = it.jobName
-			obj.metaClass.JobKind = it.jobKind
-			obj.metaClass.JobAlias = it.jobAlias
-			list << obj
-		}
-		SqlUtil.addWorkData(list)
 	}
 
 	def onPanelChanged() {
@@ -476,7 +357,7 @@ class TimeManageController {
 					workKind = "${it.jobName}"
 				}
 			}
-			WorkTableData data = new WorkTableData(
+			WorkDataTable_Data data = new WorkDataTable_Data(
 					it.workTitle,
 					workKind,
 					it.workDetail,
@@ -490,40 +371,6 @@ class TimeManageController {
 		}
 
 		// TODO 現在時刻に合わせて予定表のスクロール位置を調整する。
-	}
-
-	static WorkData toWorkData(WorkTableData wtd, WorkData wd){
-		wd.title = wtd.title.get()
-		wd.work = wtd.work.get()
-		wd.detail = wtd.detail.get()
-		wd.start = wtd.start.get()
-		wd.end = wtd.end.get()
-		return wd
-	}
-
-	static WorkTableData toWorkTableData(WorkData work, WorkTableData wtd) {
-		wtd.title.set(work.title)
-		wtd.work.set(work.work)
-		wtd.detail.set(work.detail)
-		wtd.start.set(work.start)
-		wtd.end.set(work.end)
-		return wtd
-	}
-
-	private class WorkTableData extends RecursiveTreeObject<WorkTableData> {
-		StringProperty title
-		StringProperty work
-		StringProperty detail
-		StringProperty start
-		StringProperty end
-
-		public WorkTableData(String title, String work, String detail, String start, String end) {
-			this.title = new SimpleStringProperty(title)
-			this.work = new SimpleStringProperty(work)
-			this.detail = new SimpleStringProperty(detail)
-			this.start = new SimpleStringProperty(start)
-			this.end = new SimpleStringProperty(end)
-		}
 	}
 
 }

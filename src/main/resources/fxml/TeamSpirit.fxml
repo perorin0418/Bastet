@@ -27,12 +27,12 @@
             <String fx:value="password" />
          </styleClass>
          <children>
-            <Label fx:id="dateConfirmLabel" layoutX="14.0" layoutY="14.0" text="日次確定">
+            <Label fx:id="dateConfirmLabel" layoutX="14.0" layoutY="14.0" text="日報入力">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <JFXButton fx:id="dateConfirmBtn" layoutX="77.0" layoutY="120.0" prefHeight="59.0" prefWidth="175.0" ripplerFill="#a5dee4" text="日次確定" textFill="#2ea9df" />
+            <JFXButton fx:id="dateConfirmBtn" layoutX="77.0" layoutY="120.0" prefHeight="59.0" prefWidth="175.0" ripplerFill="#a5dee4" text="日報入力" textFill="#2ea9df" />
          </children></AnchorPane>
       <AnchorPane layoutX="704.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
       <AnchorPane layoutY="520.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />

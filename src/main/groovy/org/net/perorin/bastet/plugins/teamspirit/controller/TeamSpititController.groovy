@@ -3,7 +3,7 @@ package org.net.perorin.bastet.plugins.teamspirit.controller
 import java.awt.Toolkit
 import java.time.LocalDate
 
-import org.net.perorin.bastet.plugins.teamspirit.parts.DateConfirm
+import org.net.perorin.bastet.plugins.teamspirit.parts.DailyReport
 import org.net.perorin.bastet.util.SqlUtil
 import org.net.perorin.bastet.util.Util
 import org.net.perorin.bastet.window.Window
@@ -72,7 +72,7 @@ class TeamSpititController {
 		dateConfirmPane.getChildren().add(dateConfirmFld)
 		dateConfirmBtn.setFont(Font.font("源ノ角ゴシック JP Normal", 14))
 		dateConfirmBtn.setOnMouseClicked({
-			DateConfirm.showDateConfirm(dateConfirmBtn.getScene().getWindow(), dateConfirmFld.getValue())
+			DailyReport.showDailyReport(dateConfirmBtn.getScene().getWindow(), dateConfirmFld.getValue())
 		})
 	}
 

@@ -13,14 +13,14 @@ import javafx.scene.paint.Color
 import javafx.stage.Stage
 import javafx.stage.StageStyle
 
-class DateConfirm {
+class DailyReport {
 
-	static def showDateConfirm(Stage owner, LocalDate date) {
-		FXMLLoader loader = new FXMLLoader(Util.getResourceURL("fxml/DateConfirm.fxml"))
+	static def showDailyReport(Stage owner, LocalDate date) {
+		FXMLLoader loader = new FXMLLoader(Util.getResourceURL("fxml/DailyReport.fxml"))
 		loader.load()
 		Parent root = loader.getRoot()
 
-		DateConfirmController controller = loader.getController()
+		DailyReportController controller = loader.getController()
 
 		Scene scene = new Scene(root)
 		scene.getStylesheets().add(Util.getResourceStr("css/application.css"))
@@ -32,7 +32,7 @@ class DateConfirm {
 		controller.onAfterShow()
 
 		dialog.setX(owner.getX() + owner.getWidth()/2 - 340)
-		dialog.setY(owner.getY() + owner.getHeight()/2 - 268)
+		dialog.setY(owner.getY() + owner.getHeight()/2 - 381)
 		dialog.initStyle(StageStyle.TRANSPARENT)
 		dialog.setScene(scene)
 		dialog.initOwner(owner)

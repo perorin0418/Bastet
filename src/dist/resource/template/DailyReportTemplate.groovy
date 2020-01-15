@@ -1,7 +1,28 @@
 import java.time.temporal.ChronoUnit
 
-class DateConfirmTemplate{
+class DailyReportTemplate{
 
+	/**
+	 *
+	 * @param plans :LinkedList<Object>
+	 * plans.each{
+	 *     it.title // 作業タイトル
+	 *     it.jobName // ジョブ名称
+	 *     it.jobCode // ジョブコード
+	 *     it.jobKind // ジョブ種類
+	 * }
+	 * @param results :LinkedList<Object>
+	 * plans.each{
+	 *     it.title // 作業タイトル
+	 *     it.detail // 作業詳細
+	 *     it.minute // 作業時間
+	 *     it.jobName // ジョブ名称
+	 *     it.jobCode // ジョブコード
+	 *     it.jobKind // ジョブ種類
+	 * }
+	 * @param tasks ＊未実装＊
+	 * @return
+	 */
 	static def getDateConfirmText(def plans = [], def results = [], def tasks = []) {
 		StringBuilder ret = new StringBuilder()
 		ret.metaClass.al = { it ->

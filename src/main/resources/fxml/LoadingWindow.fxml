@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.231" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.net.perorin.bastet.window.LoadingController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="202.0" styleClass="Window-Child-Border" xmlns="http://javafx.com/javafx/8.0.231" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.net.perorin.bastet.window.LoadingController">
    <center>
       <StackPane fx:id="loadingPane" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #0F2540; -fx-background-color: rgb(8,25,45);" BorderPane.alignment="CENTER">
          <children>

@@ -107,6 +107,16 @@
 	-fx-background-color: rgba(8, 25, 45, 0.98);
 }
 
+/* ウィンドウの枠色 */
+.Window-Border {
+	-fx-border-color: #0F2540;
+}
+
+/* 子ウィンドウの枠色 */
+.Window-Child-Border {
+	-fx-border-color: #2EA9DF;
+}
+
 /* 時計 時間 */
 .hour .arc {
 	-fx-stroke: #2EA9DF;
