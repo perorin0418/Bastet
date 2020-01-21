@@ -18,3 +18,10 @@ DROP TABLE WorkData;
 CREATE TABLE WorkData (Date, WorkTitle, WorkDetail, WorkStart, WorkEnd, JobCode, JobName, JobKind, JobAlias,
        PRIMARY KEY(Date, WorkTitle, WorkDetail, WorkStart, WorkEnd, JobCode, JobName, JobKind, JobAlias) );
 SELECT * FROM WorkData ORDER BY Date, WorkStart;
+
+DROP TABLE MonitoringData;
+CREATE TABLE MonitoringData (Kind, Date, Name, Path, PRIMARY KEY(Kind, Date, Name, Path));
+SELECT * FROM MonitoringData ORDER BY Kind, Date, Name;
+
+
+select name from sqlite_master where type='table';

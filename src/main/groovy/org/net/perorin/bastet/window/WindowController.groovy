@@ -55,8 +55,8 @@ class WindowController {
 	}
 
 	def initBody() {
-		body.setTopAnchor(bodyMap[timeManage.bodyName()], 20.0);
-		body.setLeftAnchor(bodyMap[timeManage.bodyName()], 24.0);
+		body.setTopAnchor(bodyMap[timeManage.bodyName()], 10.0);
+		body.setLeftAnchor(bodyMap[timeManage.bodyName()], 12.0);
 		body.getChildren().add(bodyMap[timeManage.bodyName()])
 	}
 
@@ -144,8 +144,8 @@ class WindowController {
 			def after  = bodyMap[windowName]
 
 			// 変更後のボディの位置を設定
-			body.setTopAnchor(after, 20.0);
-			body.setLeftAnchor(after, 24.0);
+			body.setTopAnchor(after, 10.0);
+			body.setLeftAnchor(after, 12.0);
 
 			// 変更後のウィンドウをボディに設定
 			body.getChildren().add(after)

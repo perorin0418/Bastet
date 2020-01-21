@@ -3,6 +3,7 @@ package org.net.perorin.bastet.window
 import java.awt.SplashScreen
 import java.util.concurrent.Executors
 
+import org.net.perorin.bastet.plugins.machine.learning.background.MonitoringProcess
 import org.net.perorin.bastet.tray.TaskTray
 import org.net.perorin.bastet.util.Util
 
@@ -40,6 +41,10 @@ class Window extends Application {
 
 		// ウィンドウ非表示でもJavaFX Threadが終了しないように設定
 		Platform.setImplicitExit(false);
+
+		MonitoringProcess.activeWindowMonitor()
+		MonitoringProcess.explorerListMonitor()
+		MonitoringProcess.processStatusMonitor()
 
 		FXMLLoader loader = new FXMLLoader(Util.getResourceURL("fxml/Window.fxml"))
 		Parent root = (Parent)loader.load()

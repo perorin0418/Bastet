@@ -241,3 +241,15 @@
 }
 /* テーブルの色設定 ここまで */
 
+
+.tab-header-background {
+	-fx-background-color: transparent;
+}
+
+.tab-selected-line {
+	-fx-background-color: #2ea9df;
+}
+
+.tab-label {
+	-fx-text-fill: #51a8dd;
+}

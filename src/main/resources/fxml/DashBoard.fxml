@@ -1,19 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="780.0" prefWidth="1056.0" xmlns="http://javafx.com/javafx/8.0.231" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.net.perorin.bastet.plugins.dashboard.controller.DashBoardController">
    <children>
-      <AnchorPane prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
-      <AnchorPane layoutX="352.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
-      <AnchorPane layoutX="704.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
-      <AnchorPane layoutY="520.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
-      <AnchorPane layoutY="260.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
-      <AnchorPane layoutX="352.0" layoutY="260.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
-      <AnchorPane layoutX="704.0" layoutY="260.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
-      <AnchorPane layoutX="704.0" layoutY="520.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
-      <AnchorPane layoutX="352.0" layoutY="520.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+      <AnchorPane layoutX="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1032.0">
+         <children>
+            <JFXTabPane prefHeight="760.0" prefWidth="1032.0">
+               <tabs>
+                  <Tab closable="false" text="監視統計">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="793.0">
+                           <children>
+                              <AnchorPane fx:id="monitorPiePane" layoutY="10.0" prefHeight="469.0" prefWidth="680.0" style="-fx-border-color: #0F2540;">
+                                 <children>
+                                    <PieChart fx:id="monitorPieChart" layoutX="11.0" layoutY="55.0" prefHeight="400.0" prefWidth="656.0" />
+                                    <Slider layoutX="189.0" layoutY="19.0" prefHeight="14.0" prefWidth="323.0" />
+                                    <Slider layoutX="189.0" layoutY="36.0" prefHeight="14.0" prefWidth="323.0" />
+                                 </children></AnchorPane>
+                              <AnchorPane layoutX="704.0" layoutY="10.0" prefHeight="225.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+                              <AnchorPane layoutX="704.0" layoutY="254.0" prefHeight="225.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+                              <AnchorPane layoutY="498.0" prefHeight="225.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+                              <AnchorPane layoutX="352.0" layoutY="498.0" prefHeight="225.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+                              <AnchorPane layoutX="704.0" layoutY="498.0" prefHeight="225.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="作業統計">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="793.0">
+                           <children>
+                              <AnchorPane layoutY="10.0" prefHeight="225.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+                              <AnchorPane layoutX="352.0" layoutY="10.0" prefHeight="225.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+                              <AnchorPane layoutX="704.0" layoutY="10.0" prefHeight="225.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+                              <AnchorPane layoutY="254.0" prefHeight="225.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+                              <AnchorPane layoutX="352.0" layoutY="254.0" prefHeight="225.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+                              <AnchorPane layoutX="704.0" layoutY="254.0" prefHeight="225.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+                              <AnchorPane layoutY="498.0" prefHeight="225.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+                              <AnchorPane layoutX="352.0" layoutY="498.0" prefHeight="225.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+                              <AnchorPane layoutX="704.0" layoutY="498.0" prefHeight="225.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </JFXTabPane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

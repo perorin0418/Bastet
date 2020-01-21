@@ -1,36 +1,553 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="bin/main" path="src/main/groovy">
+	<classpathentry output="bin/main" kind="src" path="src/main/groovy">
 		<attributes>
 			<attribute name="gradle_scope" value="main"/>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" output="bin/main" path="src/main/resources">
+	<classpathentry output="bin/main" kind="src" path="src/main/resources">
 		<attributes>
 			<attribute name="gradle_scope" value="main"/>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" output="bin/test" path="src/test/groovy">
+	<classpathentry output="bin/test" kind="src" path="src/test/groovy">
 		<attributes>
-			<attribute name="test" value="true"/>
 			<attribute name="gradle_scope" value="test"/>
 			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" output="bin/test" path="src/test/resources">
+	<classpathentry output="bin/test" kind="src" path="src/test/resources">
 		<attributes>
-			<attribute name="test" value="true"/>
 			<attribute name="gradle_scope" value="test"/>
 			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+	<classpathentry kind="output" path="bin/default"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11/"/>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.codeborne/selenide/5.4.1/2b535486d51b81010d9ce3358a2418a63f0705a5/selenide-5.4.1-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.codeborne/selenide/5.4.1/9ea60c3e3b8159ae0649d2208616736d212579a8/selenide-5.4.1.jar">
 		<attributes>
-			<attribute name="module" value="true"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="output" path="bin/default"/>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.jfoenix/jfoenix/9.0.9/3d2c351e6748da240cb6020f5b3968af63581fda/jfoenix-9.0.9-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.jfoenix/jfoenix/9.0.9/df1b688e1dc42a59e560c29f231278e20cfcd52/jfoenix-9.0.9.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.calendarfx/view/11.8.3/547cd57dbe11662dcedfdc05eaf30f2b2115717/view-11.8.3-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.calendarfx/view/11.8.3/341d6b3092513f569a5d5bdd50340149bfcb9081/view-11.8.3.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.xerial/sqlite-jdbc/3.28.0/101176f17818a3beff29614e5ff4cd9d520d2ea0/sqlite-jdbc-3.28.0-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.xerial/sqlite-jdbc/3.28.0/406b4fa58eab5d29d779fa86cedb60c7ee071b57/sqlite-jdbc-3.28.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-fxml/12/ea014fb305af116f7a274d6a1ba6c4430a75d750/javafx-fxml-12-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-fxml/12/4ba85a93963ad9c5264b5773028512b8217255e6/javafx-fxml-12-win.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-controls/13.0.1/ab8f8bbb330132fa795b38224e87be2e58882a95/javafx-controls-13.0.1-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-controls/13.0.1/5d4fbdfe69a106199c465770e11711303adcc4cc/javafx-controls-13.0.1-win.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-controls/13.0.1/ab8f8bbb330132fa795b38224e87be2e58882a95/javafx-controls-13.0.1-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-controls/13.0.1/faf74e7b806b4b2af2a84d030d8f481d6625335b/javafx-controls-13.0.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-graphics/13.0.1/5b4c8ad65023fd66964a6ae589d27bf989376d58/javafx-graphics-13.0.1-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-graphics/13.0.1/15cee20c9770dcc690479da457adb119e0a96df4/javafx-graphics-13.0.1-win.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-graphics/13.0.1/5b4c8ad65023fd66964a6ae589d27bf989376d58/javafx-graphics-13.0.1-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-graphics/13.0.1/320feb729dfedc35288db7cf31fdb958318803d5/javafx-graphics-13.0.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-base/13.0.1/6c4d32830936d7ada3b73ae0349f15464b303617/javafx-base-13.0.1-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-base/13.0.1/9f59ebf5882d82fa217b6e1baa8b1d0df226c920/javafx-base-13.0.1-win.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-base/13.0.1/6c4d32830936d7ada3b73ae0349f15464b303617/javafx-base-13.0.1-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-base/13.0.1/a54de2a9d02f57d28bc6a4dae686e197579e6ce7/javafx-base-13.0.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-java/3.141.59/b04f3ee8f5e43fa3b162981b50bb72fe1acabb33/selenium-java-3.141.59-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-java/3.141.59/e8e20b741299cb8ffedbd2925a3ab69d08b41063/selenium-java-3.141.59.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/io.github.bonigarcia/webdrivermanager/3.7.1/5fdec0a92aac771d0f0e4cbb6cb72de05a65a85d/webdrivermanager-3.7.1-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/io.github.bonigarcia/webdrivermanager/3.7.1/fdd660226258167cfb8cf06ec98c9a7d8aca92ab/webdrivermanager-3.7.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.kordamp.ikonli/ikonli-javafx/11.3.4/e5f7d5141b600eb69c5348223305fe5e98decc10/ikonli-javafx-11.3.4-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.kordamp.ikonli/ikonli-javafx/11.3.4/ed614fb77cb8a1192304e500a3ba69570583d9c6/ikonli-javafx-11.3.4.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.kordamp.ikonli/ikonli-fontawesome-pack/11.3.4/9be8fd55027bce001cff507d3b470cd486713fe6/ikonli-fontawesome-pack-11.3.4-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.kordamp.ikonli/ikonli-fontawesome-pack/11.3.4/297bd10ea3ec2275ec20e9144b00c1cef268f213/ikonli-fontawesome-pack-11.3.4.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.mnode.ical4j/ical4j/3.0.10/564ae746e56950cb7fcc5f869394a4fe9429ad51/ical4j-3.0.10-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.mnode.ical4j/ical4j/3.0.10/968e5f4ddf1083cdab87bd3506803b34576618a6/ical4j-3.0.10.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.controlsfx/controlsfx/11.0.0/621ee0b9e5a5a0d5cc8eadc8a3cbe14acf6d86d9/controlsfx-11.0.0-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.controlsfx/controlsfx/11.0.0/b6d091db1c3323eaa11d7c95b36f7830c4814689/controlsfx-11.0.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-ant/2.5.7/db77cf6332ccc9715c017d21ac97e9ef86507ee8/groovy-ant-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-ant/2.5.7/c63fbb1275031ebf49689f999707746a312fc1be/groovy-ant-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-cli-commons/2.5.7/8795b73948b26008db15a3dce3b3971e4460a855/groovy-cli-commons-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-cli-commons/2.5.7/62005bf315183e25c6b1a9a74206e11a5e14fdbf/groovy-cli-commons-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-groovysh/2.5.7/a6df5ef3f9046f819227e53751ef8112a942367/groovy-groovysh-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-groovysh/2.5.7/81e8a67b4be3363d1a6c8dcfa6d58ae70b8fb428/groovy-groovysh-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-console/2.5.7/8ef6a727853f044e9ef5faf8cc3023f4b4e9d948/groovy-console-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-console/2.5.7/6452a12e3c8e12bcde4f7eeffc37fc80fce58bbd/groovy-console-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-docgenerator/2.5.7/7e8256bf551fa1d5df7909a4b8dfcf1da41a3f4b/groovy-docgenerator-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-docgenerator/2.5.7/e58683d27c28fee32ba39c7057caa580f16c5049/groovy-docgenerator-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-groovydoc/2.5.7/9c2429730edbdfaa5cc6c3e273b1df0cd862aabf/groovy-groovydoc-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-groovydoc/2.5.7/37f09fbb63523ebba9afe923cfcbd6e6eee228c0/groovy-groovydoc-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-cli-picocli/2.5.7/6eab2fb078a9dc1bc8a07723d42d46eef570367/groovy-cli-picocli-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-cli-picocli/2.5.7/671a7bb0d9f9b861f52d23f7b3d0c2262425a47a/groovy-cli-picocli-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-datetime/2.5.7/432a9126bac81f5e05119847efb1162ef85bf25c/groovy-datetime-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-datetime/2.5.7/539a073b211e1aaac4219bdfaaa4e8ca6658e771/groovy-datetime-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-jmx/2.5.7/2da2ed7d9985a32f83313d7be2e03f2243224e4c/groovy-jmx-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-jmx/2.5.7/b594b8ace1a552d46c8fa188958cdd9535dfd6c2/groovy-jmx-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-json/2.5.7/f609a4f52b9b4d77647dbd1489276e66b2534b54/groovy-json-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-json/2.5.7/fbe5c5450d2b9b4a940391b37f2089cc8bec27/groovy-json-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-jsr223/2.5.7/f5377fa70420c5c68174816a51d9534bdd1432e3/groovy-jsr223-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-jsr223/2.5.7/13f59978ebc7fd57394ddd126fe86aecfd9ab3bc/groovy-jsr223-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-macro/2.5.7/522a8166de1ec9123f9443296e8b1fcccf66f59b/groovy-macro-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-macro/2.5.7/8ab4f44ed068c56f43388df18bcb38d8f42c8e7e/groovy-macro-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-nio/2.5.7/916ee4a79f3ae5772ebeb99caf20e22cffbc859e/groovy-nio-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-nio/2.5.7/ca4241d24280c634a929cfd6e9b7ab2e025d0da4/groovy-nio-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-servlet/2.5.7/9fad57eea1fae0f19491b0b84aacc56c4f7cd8e2/groovy-servlet-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-servlet/2.5.7/d1ec9bd84a5bf72c7a065d005136d09992e45a42/groovy-servlet-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-sql/2.5.7/40f3b9cec13878e6aa4db064bc9c74cf2009563a/groovy-sql-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-sql/2.5.7/89b9287dc94f9f602e10e32cb85aa43db3f59a7d/groovy-sql-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-swing/2.5.7/1e6b161ec1d4b7cfc64ca320bbbe9467fa428a02/groovy-swing-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-swing/2.5.7/e965ffa7b45510aede554147648df97690a00f62/groovy-swing-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-templates/2.5.7/3e071ec8343b685538c0533e7a0f0ed10488eedf/groovy-templates-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-templates/2.5.7/b21dfa125299670d0738044cc2d1f5d9ab80e6a9/groovy-templates-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-test/2.5.7/2291c91447c3a90c418eae10bb6437a9cfa91843/groovy-test-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-test/2.5.7/19d923f3d5180132d3b962d92b6d4896cc92386e/groovy-test-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-test-junit5/2.5.7/ac10cdc0f76049d64f89c1733b35de067fafdce1/groovy-test-junit5-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-test-junit5/2.5.7/32a48073f6578644b0769c471eaf533732dfc5f/groovy-test-junit5-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-testng/2.5.7/c207e31f562f1dc95f712eebfdcb94bef0735bee/groovy-testng-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-testng/2.5.7/39bacf3fa6b3ec7675c4dc4b9b5345bcde3b6d7d/groovy-testng-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-xml/2.5.7/16bb164b2043a5162d3c8bda6c131526e03e3a4d/groovy-xml-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-xml/2.5.7/7cd039b9ec0f8f3896fff31a08f82aa61282ec10/groovy-xml-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy/2.5.7/ef0777fbeb1e8ef976019533b3ec025a4ad4abbe/groovy-2.5.7-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy/2.5.7/99907efe4b69f800c42584386f5d668e4d952bd5/groovy-2.5.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-chrome-driver/3.141.59/b7189fcb53e45dcce1f02cf71bfd7d1a38883fed/selenium-chrome-driver-3.141.59-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-chrome-driver/3.141.59/67137314736c6a2f39a8aa59a562e9616ae5f77e/selenium-chrome-driver-3.141.59.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-edge-driver/3.141.59/22496e495104b01c0c38813b1a33285c83eecee9/selenium-edge-driver-3.141.59-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-edge-driver/3.141.59/fc09c66f2d0b33b0816d770761ad1d599ef0df29/selenium-edge-driver-3.141.59.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-firefox-driver/3.141.59/d45a67c085bf718f01c35b3a87a58518ccfcfc92/selenium-firefox-driver-3.141.59-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-firefox-driver/3.141.59/a99f2fe2a42747ed9809d4f62f51a9e1b336dde8/selenium-firefox-driver-3.141.59.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-ie-driver/3.141.59/ecc72d92244d4f4dbe6d63814c383f0b29dc1b9f/selenium-ie-driver-3.141.59-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-ie-driver/3.141.59/677b9b414a3a9bb2aeea89042a7b326edeb13a82/selenium-ie-driver-3.141.59.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-opera-driver/3.141.59/69a0134c983c1cfcccc4b8630614bf05edffc9bd/selenium-opera-driver-3.141.59-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-opera-driver/3.141.59/6b11ed01182bfd8bb62ddeae34cf9eadd3cfc7ff/selenium-opera-driver-3.141.59.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-safari-driver/3.141.59/42a01f2f3ba62d46d9a2e527668189b7cf64a06b/selenium-safari-driver-3.141.59-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-safari-driver/3.141.59/a32b5b88f46ea4b0356079f0d2e2217543923046/selenium-safari-driver-3.141.59.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/3.141.59/7e42f1c3e43d22f2c299b74356137dc6f2f455ec/selenium-support-3.141.59-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/3.141.59/8735de5049acf0e761defc65ee5837d6541abaf5/selenium-support-3.141.59.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/3.141.59/8950c1557ead2cdba4fdb9ba6f107dce3b5f1520/selenium-remote-driver-3.141.59-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/3.141.59/1c79ca890c312ff9916bd95df4f0c5182ec722d8/selenium-remote-driver-3.141.59.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/3.141.59/8e9423038552821844ba5f7713cc4c1e6d9835b7/selenium-api-3.141.59-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/3.141.59/e006ffd3aa7841e6e9125d9e6691b3a6b7592b05/selenium-api-3.141.59.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-exec/1.3/efd2543e352e55ce5a685eed6db8af028b737905/commons-exec-1.3-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-exec/1.3/8dfb9facd0830a27b1b5f29f84593f0aeee7773b/commons-exec-1.3.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/25.0-jre/30ade485699e7782cc2369b0e5d3d8e0bfc317c/guava-25.0-jre-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/25.0-jre/7319c34fa5866a85b6bad445adad69d402323129/guava-25.0-jre.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.11.0/cf16b99519850b1adc3b259c90fd8566a0f592f3/okhttp-3.11.0-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.11.0/75966e05a49046ca2ae734e5626f28837a8d1e82/okhttp-3.11.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.14.0/e7c96b4fe5651490d8f3c022042940d743a3bdd9/okio-1.14.0-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.14.0/102d7be47241d781ef95f1581d414b0943053130/okio-1.14.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.25/962153db4a9ea71b79d047dfd1b2a0d80d8f4739/slf4j-api-1.7.25-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.25/da76ca59f6a57ee3102f8f9bd9cee742973efa8a/slf4j-api-1.7.25.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.6/2566800dc841d9d2c5a0d34d807e45d4107dbbdf/commons-io-2.6-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.6/815893df5f31da2ece4040fe0a12fd44b577afaf/commons-io-2.6.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.5/c5b4c491aecb72e7c32a78da0b5c6b9cda8dee0f/gson-2.8.5-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.5/f645ed69d595b24d4cf8b3fbb64cc505bede8829/gson-2.8.5.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.8.1/e9748d7783594da3735ad9724390a10e7cebc01d/commons-lang3-3.8.1-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.8.1/6505a72a097d9270f7a9e7bf42c4238283247755/commons-lang3-3.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.6/bda84e42670536453ecd61ee70349c2493445994/httpclient-4.5.6-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.6/1afe5621985efe90a92d0fbc9be86271efbe796f/httpclient-4.5.6.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.rauschig/jarchivelib/1.0.0/1445db45152de2095ce732acc9807dc364a5fd8b/jarchivelib-1.0.0-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.rauschig/jarchivelib/1.0.0/b9f0c716811deadd1b15599c3f169b796eda5373/jarchivelib-1.0.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.11.3/871302b15d8cee9bfb393c4f1d0386b17646d8d1/jsoup-1.11.3-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.11.3/36da09a8f68484523fa2aaa100399d612b247d67/jsoup-1.11.3.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.kordamp.ikonli/ikonli-core/11.3.4/a1457acf4dff9a0db6f58bace51f3e14f1c4be32/ikonli-core-11.3.4-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.kordamp.ikonli/ikonli-core/11.3.4/8a9954362d60c4b69d2b60b0a3874e7ce0038f0b/ikonli-core-11.3.4.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.11/bce4ba84fd527950e35040b20a991c63e90e2850/commons-codec-1.11-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.11/3acb4705652e16236558f0f4f2192cc33c3bd189/commons-codec-1.11.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-collections4/4.1/f305f3aa45a3b208c013ef92328f8f230329f20e/commons-collections4-4.1-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-collections4/4.1/a4cf4688fe1c7e3a63aa636cc96d013af537768e/commons-collections4-4.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.sun.mail/javax.mail/1.6.2/f74a1213edad69087c1f8829ca7c68adcce35942/javax.mail-1.6.2-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.sun.mail/javax.mail/1.6.2/935151eb71beff17a2ffac15dd80184a99a0514f/javax.mail-1.6.2.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant/1.9.13/1b08a2d90e4ed56316950079ad9a2cf812092e1a/ant-1.9.13-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant/1.9.13/7aff87f91ffda6916751e39bb5688f0a53710ec4/ant-1.9.13.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/commons-cli/commons-cli/1.4/40dfd9fdef125e19136135e68d54af6d9b0cfbb8/commons-cli-1.4-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/commons-cli/commons-cli/1.4/c51c00206bb913cd8612b24abd9fa98ae89719b1/commons-cli-1.4.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/info.picocli/picocli/3.9.5/9bc4992d3b7d98885a2c42c301654f54b13a5747/picocli-3.9.5-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/info.picocli/picocli/3.9.5/f659a2feef0e8f7f8458aaf7d36c4d92f65320c8/picocli-3.9.5.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.thoughtworks.qdox/qdox/1.12.1/a284148a118e10bb84598dfb83f19d1ff128afad/qdox-1.12.1-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.thoughtworks.qdox/qdox/1.12.1/f7122f6ab1f64bdf9f5970b0e89bfb355e036897/qdox-1.12.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/jline/jline/2.14.6/e93dc55cf5b6f201e850ed339fa52e50d51105d5/jline-2.14.6-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/jline/jline/2.14.6/c3aeac59c022bdc497c8c48ed86fa50450e4896a/jline-2.14.6.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/2973d150c0dc1fefe998f834810d68f278ea58ec/junit-4.12.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-launcher/1.4.0/6c7b5c5038e82f9b969d3a9d3d9624ea9fca98aa/junit-platform-launcher-1.4.0-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-launcher/1.4.0/5cc8b7b305ffc79aa124a1a4fe5efab114f28cac/junit-platform-launcher-1.4.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/1.3.9/40719ea6961c0cb6afaeb6a921eaa1f6afd4cfdf/jsr305-1.3.9.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-compat-qual/2.0.0/eb7f7d588d0aef07a2c89178053c2a9e4613947f/checker-compat-qual-2.0.0-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-compat-qual/2.0.0/fc89b03860d11d6213d0154a62bcd1c2f69b9efa/checker-compat-qual-2.0.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.1.3/990fe1fd48078a2befecdfcebcad8e6e1bd195a0/error_prone_annotations-2.1.3-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.1.3/39b109f2cd352b2d71b52a3b5a1a9850e1dc304b/error_prone_annotations-2.1.3.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.1/1efdf5b737b02f9b72ebdec4f72c37ec411302ff/j2objc-annotations-1.1-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.1/ed28ded51a8b1c6b112568def5f4b455e6809019/j2objc-annotations-1.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.mojo/animal-sniffer-annotations/1.14/886474da3f761d39fcbb723d97ecc5089e731f42/animal-sniffer-annotations-1.14-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.codehaus.mojo/animal-sniffer-annotations/1.14/775b7e22fb10026eed3f86e8dc556dfafe35f2d5/animal-sniffer-annotations-1.14.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.10/35dcae32cc1c3bfb62546e64b90fc6359183b3b5/httpcore-4.4.10-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.10/acc54d9b28bdffe4bbde89ed2e4a1e86b5285e2b/httpcore-4.4.10.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/ecf26c7507d67782a3bbd148d170b31dfad001aa/commons-logging-1.2-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-compress/1.18/a25b942b99fde2cc2913ab39ad34abc0df4f5eb9/commons-compress-1.18-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-compress/1.18/1191f9f2bc0c47a8cce69193feb1ff0a8bcb37d5/commons-compress-1.18.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/javax.activation/activation/1.1/3697e9f67a2ed7ac5f589cff30f21173299440/activation-1.1-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/javax.activation/activation/1.1/e6cb541461c2834bdea3eb920f1884d1eb508b50/activation-1.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant-launcher/1.9.13/f48c4ba6dbf4652032f82030c64a1b580d824d74/ant-launcher-1.9.13-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant-launcher/1.9.13/24cf1a899bb4b69373dc4cd000bb52a9f46c459d/ant-launcher-1.9.13.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/1dc37250fbc78e23a65a67fbbaf71d2e9cbc3c0b/hamcrest-core-1.3-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.4.0/44fdbe60e0df90028edf59d9ffdf06d9fc0e43d9/junit-platform-engine-1.4.0-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.4.0/b4419dc190a5d82b9cac6b52e0af9140895c3f87/junit-platform-engine-1.4.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/1.4.0/12517867d09f09a4e829b80bfc958f69d883fc11/junit-platform-commons-1.4.0-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/1.4.0/e0b2ed8fac32ad6469d75d034e759f1969db8dda/junit-platform-commons-1.4.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apiguardian/apiguardian-api/1.0.0/777508fa9f3e03cafb3c1fb2eba3dca317f4b1ee/apiguardian-api-1.0.0-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apiguardian/apiguardian-api/1.0.0/3ef5276905e36f4d8055fe3cb0bdcc7503ffc85d/apiguardian-api-1.0.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.1.1/88a3a2cb15c413565462cea99f201b67bc6d2f10/opentest4j-1.1.1-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.1.1/efd9f971e91074491ea55b19f67b13470cf4fcdd/opentest4j-1.1.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/net.lightbody.bmp/browsermob-core/2.1.5/fce907d38d0bb6e778232b5337695010549d8dc6/browsermob-core-2.1.5-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/net.lightbody.bmp/browsermob-core/2.1.5/19b2a3f6c911b85793fa2ca4dbfb350dd9c01429/browsermob-core-2.1.5.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/net.lightbody.bmp/littleproxy/1.1.0-beta-bmp-17/1a7d596c9301b404c01d9fc590183b4f46e8f132/littleproxy-1.1.0-beta-bmp-17-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/net.lightbody.bmp/littleproxy/1.1.0-beta-bmp-17/8cd8e0a5b3a1d8325a2ebef44ebc12d626995a05/littleproxy-1.1.0-beta-bmp-17.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.25/ffd0827a7c67d5915b7dc611afbda56a1f247191/jcl-over-slf4j-1.7.25-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.25/f8c32b13ff142a513eeb5b6330b1588dcb2c0461/jcl-over-slf4j-1.7.25.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.8.9/98e1b4171628d8f230f6a60b248de84ed04fab0d/jackson-databind-2.8.9-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.8.9/4dfca3975be3c1a98eacb829e70f02e9a71bc159/jackson-databind-2.8.9.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.8.9/8cf3613202ddcd495137f8cb944e2da69964a641/jackson-core-2.8.9-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.8.9/569b1752705da98f49aabe2911cc956ff7d8ed9d/jackson-core-2.8.9.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.8.9/830eda77a8aaaf68a87c7dad29b3d6acd4f4f074/jackson-annotations-2.8.9-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.8.9/e0e758381a6579cb2029dace23a7209b90ac7232/jackson-annotations-2.8.9.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/dnsjava/dnsjava/2.1.8/68ea3394bb57f20295e0a132211dc00d176c243f/dnsjava-2.1.8-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/dnsjava/dnsjava/2.1.8/eed8a2cbf56cc60d07a189a429ead3067564193c/dnsjava-2.1.8.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.jcraft/jzlib/1.1.3/3102d5e0e3e6cdb601b42f7bdcbff13167a2226d/jzlib-1.1.3-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.jcraft/jzlib/1.1.3/c01428efa717624f7aabf4df319939dda9646b2d/jzlib-1.1.3.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.0.51.Final/7f3c38ac3659066a2d864aab1fd894ef17cdca79/netty-all-4.0.51.Final-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.0.51.Final/62e7fe15d645e195e130dcc64165f853bf416897/netty-all-4.0.51.Final.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/net.lightbody.bmp/mitm/2.1.5/ffee2978295ff60a15ef7e8ef35f7ec4cb17f968/mitm-2.1.5-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/net.lightbody.bmp/mitm/2.1.5/4baade9b14a050396439f07ed2b70e44ffa0882c/mitm-2.1.5.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.bouncycastle/bcpkix-jdk15on/1.58/f744c76f21a2f592e980260793948ed1cd3cad1d/bcpkix-jdk15on-1.58-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.bouncycastle/bcpkix-jdk15on/1.58/15a760a039b040e767a75c77ffcc4ff62558f903/bcpkix-jdk15on-1.58.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.bouncycastle/bcprov-jdk15on/1.58/6dea249598adbb3a58d67778022c9c603215fa57/bcprov-jdk15on-1.58-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.bouncycastle/bcprov-jdk15on/1.58/2c9aa1c4e3372b447ba5daabade4adf2a2264b12/bcprov-jdk15on-1.58.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant-junit/1.9.13/9c80b02a274bd495f458fbe477b1925e80e58a6d/ant-junit-1.9.13-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant-junit/1.9.13/618f3aac074fabfea4712db2635409a592da9ecd/ant-junit-1.9.13.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant-antlr/1.9.13/c1295b90bdc2c8586fa0ccce7d7618ba1f8739cc/ant-antlr-1.9.13-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant-antlr/1.9.13/d5b701718c6de5620fa78e0aedb64cdcae1336cf/ant-antlr-1.9.13.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/5.4.0/6c8bbb6dc869058053ba370d5f9699656e2bc93/junit-jupiter-engine-5.4.0-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/5.4.0/30083adf3fbd7b734f12e6cb4d99dedab99fc34b/junit-jupiter-engine-5.4.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.testng/testng/6.13.1/a2b77dfee647263d2c1010215441bfa3e28c4b9c/testng-6.13.1-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.testng/testng/6.13.1/2495393a0b4b7d7a4b49ea1f8516376f70f482c/testng-6.13.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.4.0/1c4c344124325ada996131e1ba8bbe26108a869f/junit-jupiter-api-5.4.0-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.4.0/1a09f25a160f71c267f9ebe3b229b17805c683e9/junit-jupiter-api-5.4.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.beust/jcommander/1.72/7ef123d5dfb6f839b41265648ff1be34982d50f8/jcommander-1.72-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/com.beust/jcommander/1.72/6375e521c1e11d6563d4f25a07ce124ccf8cd171/jcommander-1.72.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.spockframework/spock-core/1.3-groovy-2.5/9726a6007ac266047cdc616c9111e552d565800c/spock-core-1.3-groovy-2.5-sources.jar" kind="lib" path="C:/Users/perorin/.gradle/caches/modules-2/files-2.1/org.spockframework/spock-core/1.3-groovy-2.5/6f0df2cf4549dcc4b914971675da7e224e893e82/spock-core-1.3-groovy-2.5.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
 </classpath>

@@ -8,38 +8,45 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/8.0.231" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.net.perorin.bastet.plugins.teamspirit.controller.TeamSpititController">
+
+<AnchorPane prefHeight="780.0" prefWidth="1056.0" xmlns="http://javafx.com/javafx/8.0.231" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.net.perorin.bastet.plugins.teamspirit.controller.TeamSpititController">
    <children>
-      <AnchorPane prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;">
+      <AnchorPane layoutX="12.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1032.0">
          <children>
-            <Label fx:id="accountLabel" layoutX="14.0" layoutY="14.0" text="アカウント設定">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <JFXTextField fx:id="mailaddress" focusColor="#a5dee4" layoutX="29.0" layoutY="68.0" prefHeight="25.0" prefWidth="270.0" promptText="メールアドレス" unFocusColor="#2ea9df" />
-            <JFXPasswordField fx:id="password" focusColor="#a5dee4" layoutX="29.0" layoutY="120.0" prefHeight="25.0" prefWidth="270.0" promptText="パスワード" style="-fx-prompt-text-fill: #2ea9df; -fx-text-fill: #a5dee4;" unFocusColor="#2ea9df" />
-            <JFXButton fx:id="accountRegist" layoutX="216.0" layoutY="170.0" prefHeight="43.0" prefWidth="83.0" ripplerFill="#a5dee4" text="登録" textFill="#2ea9df" />
-         </children></AnchorPane>
-      <AnchorPane fx:id="dateConfirmPane" layoutX="352.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;">
-         <styleClass>
-            <String fx:value="account" />
-            <String fx:value="password" />
-         </styleClass>
-         <children>
-            <Label fx:id="dateConfirmLabel" layoutX="14.0" layoutY="14.0" text="日報入力">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <JFXButton fx:id="dateConfirmBtn" layoutX="77.0" layoutY="120.0" prefHeight="59.0" prefWidth="175.0" ripplerFill="#a5dee4" text="日報入力" textFill="#2ea9df" />
-         </children></AnchorPane>
-      <AnchorPane layoutX="704.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
-      <AnchorPane layoutY="520.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
-      <AnchorPane layoutY="260.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
-      <AnchorPane layoutX="352.0" layoutY="260.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
-      <AnchorPane layoutX="704.0" layoutY="260.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
-      <AnchorPane layoutX="704.0" layoutY="520.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
-      <AnchorPane layoutX="352.0" layoutY="520.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+            <AnchorPane prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;">
+               <children>
+                  <Label fx:id="accountLabel" layoutX="14.0" layoutY="14.0" text="アカウント設定">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="mailaddress" focusColor="#a5dee4" layoutX="29.0" layoutY="68.0" prefHeight="25.0" prefWidth="270.0" promptText="メールアドレス" unFocusColor="#2ea9df" />
+                  <JFXPasswordField fx:id="password" focusColor="#a5dee4" layoutX="29.0" layoutY="120.0" prefHeight="25.0" prefWidth="270.0" promptText="パスワード" style="-fx-prompt-text-fill: #2ea9df; -fx-text-fill: #a5dee4;" unFocusColor="#2ea9df" />
+                  <JFXButton fx:id="accountRegist" layoutX="216.0" layoutY="170.0" prefHeight="43.0" prefWidth="83.0" ripplerFill="#a5dee4" text="登録" textFill="#2ea9df" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="dateConfirmPane" layoutX="352.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;">
+               <styleClass>
+                  <String fx:value="account" />
+                  <String fx:value="password" />
+               </styleClass>
+               <children>
+                  <Label fx:id="dateConfirmLabel" layoutX="14.0" layoutY="14.0" text="日報入力">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="dateConfirmBtn" layoutX="77.0" layoutY="120.0" prefHeight="59.0" prefWidth="175.0" ripplerFill="#a5dee4" text="日報入力" textFill="#2ea9df" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="704.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+            <AnchorPane layoutY="520.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+            <AnchorPane layoutY="260.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+            <AnchorPane layoutX="352.0" layoutY="260.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+            <AnchorPane layoutX="704.0" layoutY="260.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+            <AnchorPane layoutX="704.0" layoutY="520.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+            <AnchorPane layoutX="352.0" layoutY="520.0" prefHeight="240.0" prefWidth="328.0" style="-fx-border-color: #0F2540;" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

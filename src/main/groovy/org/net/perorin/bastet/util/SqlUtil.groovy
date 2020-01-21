@@ -5,6 +5,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 import org.net.perorin.bastet.data.JobData
+import org.net.perorin.bastet.data.MonitoringData
 
 import groovy.sql.Sql
 
@@ -12,11 +13,46 @@ class SqlUtil{
 
 	static def sql;
 
+	static synchronized def dbinit() {
+		def tableList = []
+		SqlUtil.getInstance().eachRow("select * from sqlite_master where type = 'table'"){
+			tableList << it.name
+		}
+		if(!tableList.contains("Parameter")) {
+			SqlUtil.getInstance().execute("""
+				CREATE TABLE Parameter (CodeID PRIMARY KEY, Desc, Para1, Para2, Para3, Para4, Para5, Para6, Para7, Para8);
+				INSERT INTO Parameter VALUES ('AES-Key-Path', 'AES key file path', '', '', '', '', '', '', '', '');
+				INSERT INTO Parameter VALUES ('TeamSpiritMailAddress', 'TeamSpirit MailAddress', '', '', '', '', '', '', '', '');
+				INSERT INTO Parameter VALUES ('TeamSpiritPassword', 'TeamSpirit Password', '', '', '', '', '', '', '', '');
+				INSERT INTO Parameter VALUES ('TeamSpititURL', 'TeamSpirit URL', 'https://teamspirit-5640.cloudforce.com/home/home.jsp', '', '', '', '', '', '', '');
+				INSERT INTO Parameter VALUES ('SelenideBrowser', 'SelenideBrowser(Configuration.browser)', 'chrome', '', '', '', '', '', '', '');
+				INSERT INTO Parameter VALUES ('HolidayURL', 'URL for downloading holiday CSV', 'https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv', '', '', '', '', '', '', '');
+			""")
+		}
+		if(!tableList.contains("JobData")) {
+			SqlUtil.getInstance().execute("""
+				CREATE TABLE JobData (Code, Name, Kind, Alias, PRIMARY KEY(Code, Name, Kind, Alias) );
+			""")
+		}
+		if(!tableList.contains("WorkData")) {
+			SqlUtil.getInstance().execute("""
+				CREATE TABLE WorkData (Date, WorkTitle, WorkDetail, WorkStart, WorkEnd, JobCode, JobName, JobKind, JobAlias,
+					PRIMARY KEY(Date, WorkTitle, WorkDetail, WorkStart, WorkEnd, JobCode, JobName, JobKind, JobAlias) );
+			""")
+		}
+		if(!tableList.contains("MonitoringData")) {
+			SqlUtil.getInstance().execute("""
+				CREATE TABLE MonitoringData (Kind, Date, Name, Path, PRIMARY KEY(Kind, Date, Name, Path));
+			""")
+		}
+	}
+
 	static def getInstance() {
 		if(sql == null) {
 			def config = Util.getConfig()
 			def jdbcDriver = 'org.sqlite.JDBC'
 			sql = Sql.newInstance("jdbc:sqlite:" + config.sql.database.path + "", jdbcDriver);
+			SqlUtil.dbinit()
 		}
 		return sql
 	}
@@ -120,5 +156,11 @@ class SqlUtil{
 			ret << obj
 		}
 		return ret
+	}
+
+	static def addMonitoringData(MonitoringData md) {
+		SqlUtil.getInstance().execute("""
+				replace into MonitoringData values(${md.kind}, ${md.date}, ${md.title}, ${md.path})
+			""")
 	}
 }

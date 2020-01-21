@@ -48,8 +48,7 @@ class TeamSpititController {
 		accountLabel.setFont(Font.font("源ノ角ゴシック JP Normal", 24))
 		accountLabel.setTextFill(Paint.valueOf("#2ea9df"))
 		mailaddress.setFont(Font.font("源ノ角ゴシック JP Normal", 14))
-		mailaddress.setText(SqlUtil.getParameter("TeamSpiritMailAddress").Para1 != null ?
-				SqlUtil.getParameter("TeamSpiritMailAddress").Para1 : "")
+		mailaddress.setText(SqlUtil.getParameter("TeamSpiritMailAddress")?.Para1 ?: "")
 		password.setFont(Font.font("源ノ角ゴシック JP Normal", 14))
 		accountRegist.setFont(Font.font("源ノ角ゴシック JP Normal", 14))
 		accountRegist.setOnMouseClicked({

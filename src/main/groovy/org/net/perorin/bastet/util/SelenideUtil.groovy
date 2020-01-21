@@ -97,8 +97,8 @@ class SelenideUtil {
 		LoadingWindow.appendTextLine("DBに登録")
 	}
 
-	static def dateConfirm(String text) {
-		
+	static def dailyReport(String text) {
+
 	}
 
 
